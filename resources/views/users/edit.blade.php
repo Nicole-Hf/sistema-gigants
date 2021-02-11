@@ -22,7 +22,12 @@
                                         <input  type="text"
                                                 class="form-control"
                                                 name="name"
-                                                value="{{ $user->name }}" autofocus>
+                                                value="{{ old('name',$user->name) }}" autofocus>
+                                        @if ($errors->has('name'))
+                                            <span class="error text-danger" for="input-name">
+                                                {{ $errors->first('name') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 {{--Correo de Usuario--}}
@@ -32,7 +37,12 @@
                                         <input  type="email"
                                                 class="form-control"
                                                 name="email"
-                                                value="{{ $user->email }}">
+                                                value="{{ old('email',$user->email) }}">
+                                        @if ($errors->has('email'))
+                                            <span class="error text-danger" for="input-name">
+                                                {{ $errors->first('email') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 {{--Contraseña de Usuario--}}
@@ -43,6 +53,11 @@
                                                 class="form-control"
                                                 name="password"
                                                 placeholder="Ingrese la contraseña solo si quiere cambiarla">
+                                        @if ($errors->has('password'))
+                                            <span class="error text-danger" for="input-name">
+                                                {{ $errors->first('password') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

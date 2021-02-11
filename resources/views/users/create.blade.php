@@ -14,13 +14,29 @@
                             </div>
                             {{--Body--}}
                             <div class="card-body">
+                                {{--Si los campos están vacíos}}
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif --}}
                                 {{--Nombre de Usuario--}}
                                 <div class="row">
                                     <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
-                                                name="name" autofocus>
+                                                name="name"
+                                                value="{{ old('name') }}" autofocus>
+                                        @if ($errors->has('name'))
+                                            <span class="error text-danger" for="input-name">
+                                                {{ $errors->first('name') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 {{--Correo de Usuario--}}
@@ -29,7 +45,13 @@
                                     <div class="col-sm-7">
                                         <input  type="email"
                                                 class="form-control"
-                                                name="email">
+                                                name="email"
+                                                value="{{ old('email') }}">
+                                        @if ($errors->has('email'))
+                                            <span class="error text-danger" for="input-name">
+                                                {{ $errors->first('email') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 {{--Contraseña de Usuario--}}
@@ -39,6 +61,11 @@
                                         <input  type="password"
                                                 class="form-control"
                                                 name="password">
+                                        @if ($errors->has('password'))
+                                            <span class="error text-danger" for="input-name">
+                                                {{ $errors->first('password') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
