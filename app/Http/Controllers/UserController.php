@@ -64,12 +64,12 @@ class UserController extends Controller
     public function edit($id)
     {
         $persona = Persona::findOrFail($id);
-        return view('users.edit', ['personas'=>$persona]);
+        return view('users.edit', ['persona'=>$persona]);
     }
 
     public function update(UserEditRequest $request, $id)
     {
-        $user=User::findOrFail($id);
+        /*$user=User::findOrFail($id);
         $datos = $request->only('name','email');
         if (trim($request->password)=='')
         {
@@ -81,12 +81,45 @@ class UserController extends Controller
         }
 
         $user->update($datos);
-        return redirect()->route('users.index')->with('mensaje','Datos actualizados correctamente');
+        return redirect()->route('users.index')->with('mensaje','Datos actualizados correctamente');*/
+
+        $persona = Persona::findOrFail($id);
+        $persona->carnet_identidad = $request->input('carnet_identidad');
+        $persona->nombre = $request->input('nombre');
+        $persona->apellidos = $request->input('apellidos');
+        $persona->telefono = $request->input('telefono');
+        $persona->direccion = $request->input('direccion');
+        $persona->email = $request->input('email');
+        $persona->tipo = self::$TIPO_USUARIO;
+        $persona->save();
+
+        $user = $persona->user; //accede al modelo Persona funcion "user"
+        $datos = $request->only('name','email','persona_id');
+        if (trim($request->password)=='')
+        {
+            $datos=$request->except('password');
+        }
+        else{
+            $datos=$request->all();
+            $datos['password']=bcrypt($request->password);
+        }
+        /*$user->name = $request->input('nombre');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->persona_id = $persona->id;
+        $user->save();*/
+        $user->update($datos);
+
+        return redirect()->route('users.index');
     }
 
-    public function destroy(User $user)
+    public function destroy($id) //User $user
     {
-        $user->delete();
-        return back()->with('mensaje','Usuario eliminado correctamente');
+        /*$user->delete();
+        return back()->with('mensaje','Usuario eliminado correctamente');*/
+
+        $persona = Persona::findOrFail($id);
+        $persona->delete();
+        return redirect()->route('users.index');
     }
 }
