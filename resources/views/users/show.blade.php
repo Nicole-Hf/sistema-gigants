@@ -2,31 +2,46 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8">
+            {{--<div class="row">--}}
+                <div class="col-md-6"> {{--col-md-8--}}
                     <div class="card">
                         {{--Header Principal--}}
-                        <div class="card card-nav-tabs text-center">
-                            <div class="card-header card-header-rose">
-                                <h4 class="card-title">Detalle de Usuario</h4>
-                                {{--<p class="card-category">{{ $user->name }}</p>--}}
+                        {{--<div class="card card-nav-tabs text-center">--}}
+                            <div class="card-header card-header-text card-header-rose">  {{--card-header card-header-rose--}}
+                                <div class="card-text">
+                                    <a href="#" class="d-flex">
+                                        <img src="{{ asset('/img/faces/avatar.jpg') }}" class="card-img-top" style="width:60px">
+                                        <h2 class="card-title mx-3">{{ $persona->nombre }}</h2>
+                                    {{--<p class="card-category">{{ $user->name }}</p>--}}
+                                    </a>
+                                </div>
                             </div>
                         {{--Body Principal--}}
                             <div class="card-body">
                                 <p class="card-text">
                                 <div class="author">
-                                    <a href="#" class="d-flex">
-                                        <img src="{{ asset('/img/faces/avatar.jpg') }}" alt="image" class="avatar">
-                                        <h5 class="title mx-3">{{ $user->name }}</h5>
-                                    </a>
                                     <p class="card-text ">
-                                        {{ $user->name }}  <br>
-                                        {{ $user->email }} <br>
-                                        {{ $user->created_at }} <br>
+                                        <label for="carnet_identidad" class="col-form-label">Carnet de Identidad: </label>
+                                        {{ $persona->carnet_identidad }} <br>
+                                        <label for="nombre" class="col-form-label">Nombre Completo: </label>
+                                        {{ $persona->nombre }}
+                                        {{ $persona->apellidos }} <br>
+                                        <label for="telefono" class="col-form-label">Teléfono: </label>
+                                        {{ $persona->telefono }} <br>
+                                        <label for="direccion" class="col-form-label">Dirección: </label>
+                                        {{ $persona->direccion }} <br>
+                                        <label for="email" class="col-form-label">Correo Electrónico: </label>
+                                        {{ $persona->email }} <br>
+                                        <label for="tipo" class="col-form-label">Tipo de Persona: </label>
+                                        {{ $persona->tipo }} <br>
+                                        <label for="created_at" class="col-form-label">Fecha de Creación: </label>
+                                        {{ $persona->created_at }} <br>
                                     </p>
                                 </div>
                                 </p>
-                                <a href="{{ route('users.index')}}" class="btn btn-rose">Volver</a>
+                                <div class="d-grid gap-2 col-6 mx-auto">
+                                    <a href="{{ route('users.index')}}" class="btn btn-rose">Volver</a>
+                                </div>
                             </div>
                         </div>
                     </div>

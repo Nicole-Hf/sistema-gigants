@@ -57,9 +57,9 @@ Route::get('/lineas/create',
     [App\Http\Controllers\LineaController::class,'create'])->name('lineas.create');
 Route::post('/lineas',
     [App\Http\Controllers\LineaController::class,'store'])->name('lineas.store');
-Route::get('/lineas/{marca}/edit',
+Route::get('/lineas/{linea}/edit',
     [App\Http\Controllers\LineaController::class,'edit'])->name('lineas.edit');
-Route::put('/lineas/{marca}',
+Route::put('/lineas/{linea}',
     [App\Http\Controllers\LineaController::class,'update'])->name('lineas.update');
-Route::delete('/lineas/{marca}',
+Route::delete('/lineas/{linea}',
     [App\Http\Controllers\LineaController::class,'destroy'])->name('lineas.delete');

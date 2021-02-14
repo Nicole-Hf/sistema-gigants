@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage'=>'users','titlePage'=>'Agregar Línea'])
+@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Agregar Línea'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -15,24 +15,23 @@
                             <div class="card-body">
                                 {{--Nombre--}}
                                 <div class="row">
-                                    <label for="name" class="col-sm-2 col-form-label">Línea de Producto</label>
+                                    <label class="col-sm-2 col-form-label"> Línea </label>  {{--for="name" --}}
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
-                                                name="linea"
-                                                value="{{ old('linea') }}" autofocus>
-                                        @if ($errors->has('linea'))
-                                            <span class="error text-danger" for="input-marca">
+                                                name="linea">   {{--value="{{ old('linea') }}" autofocus--}}
+                                        {{--@if ($errors->has('linea'))
+                                            <span class="error text-danger" for="input-linea">
                                                 {{ $errors->first('linea') }}
                                             </span>
-                                        @endif
+                                        @endif--}}
                                     </div>
                                 </div>
                             </div>
                             {{--Botones/Footer--}}
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-rose">Guardar Datos</button>
-                                <a class="btn btn-rose" href="{{ route('lineas.index') }}">Cancelar</a>
+                                <button type="submit" class="btn btn-rose"> Guardar Datos </button>
+                                <a class="btn btn-rose" href="{{ route('lineas.index') }}"> Cancelar </a>
                             </div>
                         </div>
                     </form>

@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage'=>'users', 'titlePage'=>'Líneas de Productos'])
+@extends('layouts.main', ['activePage'=>'caracteristicas', 'titlePage'=>'Líneas de Productos'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -14,7 +14,7 @@
             {{--Botón agregar--}}
             <div class="row">
                 <div class="col-12 text-left">
-                    <a href="{{ route('lineas.create')  }}" class="btn btn-rose">Agregar Línea</a>
+                    <a href="{{ route('lineas.create')  }}" class="btn btn-rose"> Agregar Línea </a>
                 </div>
             </div>
             <div class="row">
@@ -22,7 +22,7 @@
                     <div class="card">
                         {{--Header--}}
                         <div class="card-header card-header-rose">
-                            <h4 class="card-title">Marcas</h4>
+                            <h4 class="card-title"> Líneas </h4>
                         </div>
                         {{--Body--}}
                         <div class="card-body">

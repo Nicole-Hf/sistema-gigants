@@ -15,7 +15,7 @@
                             <div class="card-body">
                                 {{--Nombre de la Marca--}}
                                 <div class="row">
-                                    <label for="name" class="col-sm-2 col-form-label">Nombre de Marca</label>
+                                    <label for="name" class="col-sm-2 col-form-label"> Marca </label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
@@ -31,8 +31,8 @@
                             </div>
                             {{--Botones/Footer--}}
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-rose">Guardar Datos</button>
-                                <a class="btn btn-rose" href="{{ route('marcas.index') }}">Cancelar</a>
+                                <button type="submit" class="btn btn-rose"> Guardar Datos </button>
+                                <a class="btn btn-rose" href="{{ route('marcas.index') }}"> Cancelar </a>
                             </div>
                         </div>
                     </form>

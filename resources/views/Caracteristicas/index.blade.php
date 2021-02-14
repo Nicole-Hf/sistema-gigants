@@ -8,7 +8,9 @@
                 <div class="card" style="width: 12rem;">
                     <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
                     <div class="card-body">
-                        <a href="{{ route('marcas.index') }}" class="btn btn-rose text-center"> Marcas </a>
+                        <div class="d-grid gap-2 col-lg-11 mx-auto">
+                            <a href="{{ route('marcas.index') }}" class="btn btn-rose text-center"> Marcas </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -17,7 +19,9 @@
                 <div class="card" style="width: 12rem;">
                     <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
                     <div class="card-body">
-                        <a href="{{ route('lineas.index') }}" class="btn btn-rose text-center"> Líneas </a>
+                        <div class="d-grid gap-2 col-lg-11 mx-auto">
+                            <a href="{{ route('lineas.index') }}" class="btn btn-rose text-center"> Líneas </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -26,7 +30,9 @@
                 <div class="card" style="width: 12rem;">
                     <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
                     <div class="card-body">
-                        <a href="#" class="btn btn-rose text-center">Ir a Familia</a>
+                        <div class="d-grid gap-2 col-lg-11 mx-auto">
+                            <a href="#" class="btn btn-rose text-center"> Familias </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,7 +41,9 @@
                 <div class="card" style="width: 12rem;">
                     <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
                     <div class="card-body">
-                        <a href="#" class="btn btn-rose text-center">Ir a Modelo</a>
+                        <div class="d-grid gap-2 col-lg-11 mx-auto">
+                            <a href="#" class="btn btn-rose text-center"> Modelos </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,7 +52,9 @@
                 <div class="card" style="width: 12rem;">
                     <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
                     <div class="card-body">
-                        <a href="#" class="btn btn-rose text-center">Ir a Talla</a>
+                        <div class="d-grid gap-2 col-lg-11 mx-auto">
+                            <a href="#" class="btn btn-rose text-center"> Tallas </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -53,7 +63,9 @@
                 <div class="card" style="width: 12rem;">
                     <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
                     <div class="card-body">
-                        <a href="#" class="btn btn-rose text-center">Ir a Color</a>
+                        <div class="d-grid gap-2 col-lg-11 mx-auto">
+                            <a href="#" class="btn btn-rose text-center"> Colores </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,7 +74,9 @@
                 <div class="card" style="width: 12rem;">
                     <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
                     <div class="card-body">
-                        <a href="#" class="btn btn-rose text-center">Ir a Temporada</a>
+                        <div class="d-grid gap-2 col-lg-12 mx-auto">
+                            <a href="#" class="btn btn-rose text-center"> Temporadas </a>
+                        </div>
                     </div>
                 </div>
             </div>

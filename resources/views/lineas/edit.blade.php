@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage'=>'users','titlePage'=>'Editar Línea'])
+@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Editar Línea'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -16,7 +16,7 @@
                             <div class="card-body">
                                 {{--Nombre de Marca--}}
                                 <div class="row">
-                                    <label for="linea" class="col-sm-2 col-form-label">Línea de Producto</label>
+                                    <label for="linea" class="col-sm-2 col-form-label"> Línea </label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"

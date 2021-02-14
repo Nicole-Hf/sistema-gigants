@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage'=>'users', 'titlePage'=>'Marcas'])
+@extends('layouts.main', ['activePage'=>'caracteristicas', 'titlePage'=>'Marcas'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -14,7 +14,7 @@
             {{--Botón agregar--}}
             <div class="row">
                 <div class="col-12 text-left">
-                    <a href="{{ route('marcas.create')  }}" class="btn btn-rose">Agregar Marca</a>
+                    <a href="{{ route('marcas.create')  }}" class="btn btn-rose"> Agregar Marca </a>
                 </div>
             </div>
             <div class="row">
@@ -22,7 +22,7 @@
                     <div class="card">
                         {{--Header--}}
                         <div class="card-header card-header-rose">
-                            <h4 class="card-title">Marcas</h4>
+                            <h4 class="card-title"> Marcas </h4>
                         </div>
                         {{--Body--}}
                         <div class="card-body">
