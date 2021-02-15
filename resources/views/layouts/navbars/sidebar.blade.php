@@ -94,36 +94,6 @@
                     <p>Administrar Usuarios</p>
                 </a>
             </li>
-            {{--<li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">library_books</i>
-                    <p>{{ __('Typography') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">bubble_chart</i>
-                    <p>{{ __('Icons') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">location_ons</i>
-                    <p>{{ __('Maps') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">notifications</i>
-                    <p>{{ __('Notifications') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">language</i>
-                    <p>{{ __('RTL Support') }}</p>
-                </a>
-            </li>--}}
         </ul>
     </div>
 </div>

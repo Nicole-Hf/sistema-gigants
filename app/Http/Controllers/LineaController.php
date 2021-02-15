@@ -16,8 +16,7 @@ class LineaController extends Controller
      */
     public function index()
     {
-        $lineas = Linea::paginate(5);
-        return view('lineas.index',compact('lineas'));
+        //
     }
 
     /**
@@ -36,11 +35,10 @@ class LineaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LineaCreateRequest $request)
+    public function store(Request $request)
     {
         Linea::create($request->all());
-
-        return redirect()->route('lineas.index')->with('mensaje','Linea creada correctamente');
+        return redirect()->back();
     }
 
     /**
@@ -62,7 +60,7 @@ class LineaController extends Controller
      */
     public function edit(Linea $linea)
     {
-        return view('lineas.edit',compact('linea'));
+        //
     }
 
     /**
@@ -74,11 +72,7 @@ class LineaController extends Controller
      */
     public function update(LineaEditRequest $request, $id)
     {
-        $linea = Linea::findOrFail($id);
-        $datos = $request->all();
-        $linea->update($datos);
-
-        return redirect()->route('lineas.index')->with('mensaje','Datos actualizados correctamente');
+        //
     }
 
     /**
@@ -89,7 +83,6 @@ class LineaController extends Controller
      */
     public function destroy(Linea $linea)
     {
-        $linea->delete();
-        return back()->with('mensaje','Eliminado correctamente');
+        //
     }
 }

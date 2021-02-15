@@ -1,29 +1,30 @@
-@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Agregar Marca'])
+@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Editar Familia'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('marcas.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('familias.update', $familia->id) }}" method="post" class="form-horizontal">
                         @csrf
+                        @method('PUT')
                         <div class="card">
                             {{--Header--}}
                             <div class="card-header card-header-rose">
-                                <h4 class="card-title">Formulario de Creación</h4>
+                                <h4 class="card-title">Formulario de Edición</h4>
                             </div>
                             {{--Body--}}
                             <div class="card-body">
-                                {{--Nombre de la Marca--}}
+                                {{--Nombre de Familia--}}
                                 <div class="row">
-                                    <label for="marca" class="col-sm-2 col-form-label"> Marca </label>
+                                    <label for="nombre" class="col-sm-2 col-form-label"> Familia </label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
-                                                name="marca"
-                                                value="{{ old('marca') }}" autofocus>
-                                        @if ($errors->has('marca'))
-                                            <span class="error text-danger" for="input-marca">
-                                                {{ $errors->first('marca') }}
+                                                name="nombre"
+                                                value="{{ old('marca',$familia->nombre) }}" autofocus>
+                                        @if ($errors->has('nombre'))
+                                            <span class="error text-danger" for="input-name">
+                                                {{ $errors->first('nombre') }}
                                             </span>
                                         @endif
                                     </div>
@@ -31,8 +32,8 @@
                             </div>
                             {{--Botones/Footer--}}
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-rose"> Guardar Datos </button>
-                                <a class="btn btn-rose" href="{{ route('marcas.index') }}"> Cancelar </a>
+                                <button type="submit" class="btn btn-rose">Actualizar Datos</button>
+                                <a class="btn btn-rose" href="{{ route('familias.index') }}">Cancelar</a>
                             </div>
                         </div>
                     </form>

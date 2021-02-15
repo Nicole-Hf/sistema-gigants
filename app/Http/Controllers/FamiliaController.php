@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FamiliaCreateRequest;
+use App\Http\Requests\FamiliaEditRequest;
+use App\Models\Familia;
 use Illuminate\Http\Request;
 
 class FamiliaController extends Controller
@@ -23,7 +26,7 @@ class FamiliaController extends Controller
      */
     public function create()
     {
-        //
+        return view('familias.create');
     }
 
     /**
@@ -34,7 +37,8 @@ class FamiliaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Familia::create($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -54,7 +58,7 @@ class FamiliaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Familia &$familia)
     {
         //
     }
@@ -66,7 +70,7 @@ class FamiliaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FamiliaEditRequest $request, $id)
     {
         //
     }
@@ -77,7 +81,7 @@ class FamiliaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Familia $familia)
     {
         //
     }

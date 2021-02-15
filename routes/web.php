@@ -37,29 +37,25 @@ Route::delete
 ('/user/{id}',[App\Http\Controllers\UserController::class,'destroy'])->name('users.delete');
 
 //RUTAS DE MARCAS
-Route::get('/marcas',
+Route::get('/caracteristicas/marcas',
     [App\Http\Controllers\MarcaController::class,'index'])->name('marcas.index');
-Route::get('/marcas/create',
+Route::get('/caracteristicas/marcas/create',
     [App\Http\Controllers\MarcaController::class,'create'])->name('marcas.create');
-Route::post('/marcas',
+Route::post('/caracteristicas/marcas',
     [App\Http\Controllers\MarcaController::class,'store'])->name('marcas.store');
-Route::get('/marcas/{marca}/edit',
+Route::get('/caracteristicas/marcas/{marca}/edit',
     [App\Http\Controllers\MarcaController::class,'edit'])->name('marcas.edit');
-Route::put('/marcas/{marca}',
+Route::put('/caracteristicas/marcas/{marca}',
     [App\Http\Controllers\MarcaController::class,'update'])->name('marcas.update');
-Route::delete('/marcas/{marca}',
+Route::delete('/caracteristicas/marcas/{marca}',
     [App\Http\Controllers\MarcaController::class,'destroy'])->name('marcas.delete');
 
 //RUTAS DE LINEAS
-Route::get('/lineas',
-    [App\Http\Controllers\LineaController::class,'index'])->name('lineas.index');
-Route::get('/lineas/create',
-    [App\Http\Controllers\LineaController::class,'create'])->name('lineas.create');
-Route::post('/lineas',
-    [App\Http\Controllers\LineaController::class,'store'])->name('lineas.store');
-Route::get('/lineas/{linea}/edit',
-    [App\Http\Controllers\LineaController::class,'edit'])->name('lineas.edit');
-Route::put('/lineas/{linea}',
-    [App\Http\Controllers\LineaController::class,'update'])->name('lineas.update');
-Route::delete('/lineas/{linea}',
-    [App\Http\Controllers\LineaController::class,'destroy'])->name('lineas.delete');
+Route::get('/caracteristicas/lineas/create',[App\Http\Controllers\LineaController::class,'create'])->name('lineas.create');
+Route::post('/caracteristicas/lineas',[App\Http\Controllers\LineaController::class,'store'])->name('lineas.store');
+
+
+//RUTAS DE FAMILIAS
+Route::get('/caracteristicas/familias/create',[App\Http\Controllers\FamiliaController::class,'create'])->name('familias.create');
+Route::post('/caracteristicas/familias', [App\Http\Controllers\FamiliaController::class,'store'])->name('familias.store');
+

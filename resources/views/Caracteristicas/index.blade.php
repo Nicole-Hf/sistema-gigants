@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'dashboard', 'titlePage' => __('Tienda Gigants')])
+@extends('layouts.main', ['activePage' => 'caracteristicas', 'titlePage' => __('Productos')])
 
 @section('content')
     <div class="content">
@@ -20,7 +20,7 @@
                     <img class="card-img-top" src="{{ asset('/img/familia.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <div class="d-grid gap-2 col-lg-11 mx-auto">
-                            <a href="{{ route('lineas.index') }}" class="btn btn-rose text-center"> Líneas </a>
+                            <a href="#" class="btn btn-rose text-center"> Líneas </a>
                         </div>
                     </div>
                 </div>
