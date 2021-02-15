@@ -16,7 +16,8 @@ class FamiliaController extends Controller
      */
     public function index()
     {
-        //
+        $familias = Familia::all();
+        return view('familias.index',compact('familias'));
     }
 
     /**

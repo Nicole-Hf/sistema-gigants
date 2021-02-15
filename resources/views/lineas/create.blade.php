@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Línea'])
+@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Agregar Línea'])
 @section('content')
     <div class="content">
         <div class="container-fluid">

@@ -10,7 +10,7 @@ class Linea extends Model
     use HasFactory;
 
     protected $table = 'lineas';
-    protected $fillable = ['lineas'];
+    protected $fillable = ['nombre'];
 
     public function productos()
     {

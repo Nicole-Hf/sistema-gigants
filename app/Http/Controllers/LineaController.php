@@ -16,7 +16,8 @@ class LineaController extends Controller
      */
     public function index()
     {
-        //
+        $lineas = Linea::all();
+        return view('lineas.index',compact('lineas'));
     }
 
     /**
@@ -37,7 +38,7 @@ class LineaController extends Controller
      */
     public function store(Request $request)
     {
-        Linea::create($request->all());
+        Linea::create($request->only('nombre'));
         return redirect()->back();
     }
 
