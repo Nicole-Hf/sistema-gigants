@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage'=>'caracteristicas', 'titlePage'=>'Líneas de Productos'])
+@extends('layouts.main', ['activePage'=>'caracteristicas', 'titlePage'=>'Lineas'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -22,7 +22,7 @@
                     <div class="card">
                         {{--Header--}}
                         <div class="card-header card-header-rose">
-                            <h4 class="card-title"> Líneas </h4>
+                            <h4 class="card-title"> Líneas de Producto </h4>
                         </div>
                         {{--Body--}}
                         <div class="card-body">
@@ -36,7 +36,7 @@
                                     <th>Fecha de Creación</th>
                                     <th class="text-right">Acciones</th>
                                     </thead>
-                                    {{--Llamar a las lineas--}}
+                                    {{--Llamar a las marcas--}}
                                     <tbody>
                                     @foreach($lineas as $linea)
                                         <tr>
@@ -44,11 +44,11 @@
                                             <td>{{ $linea->linea }}</td>
                                             <td>{{ $linea->created_at }}</td>
                                             <td class="td-actions text-right">
-                                                {{--Editar--}}
+                                                {{--Editar Marca--}}
                                                 <a href="{{ route('lineas.edit',$linea->id) }}" class="btn btn-warning">
                                                     <i class="material-icons">edit</i>
                                                 </a>
-                                                {{--Eliminar--}}
+                                                {{--Eliminar Marca--}}
                                                 <form action="{{ route('lineas.delete',$linea->id) }}" method="post"
                                                       style="display: inline-block;"
                                                       onsubmit="return confirm('¿Está seguro?')">

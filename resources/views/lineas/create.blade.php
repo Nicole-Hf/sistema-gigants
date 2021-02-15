@@ -13,18 +13,19 @@
                             </div>
                             {{--Body--}}
                             <div class="card-body">
-                                {{--Nombre--}}
+                                {{--Nombre de la Marca--}}
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label"> Línea </label>  {{--for="name" --}}
+                                    <label for="name" class="col-sm-2 col-form-label"> Línea </label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
-                                                name="linea">   {{--value="{{ old('linea') }}" autofocus--}}
-                                        {{--@if ($errors->has('linea'))
+                                                name="linea"
+                                                value="{{ old('linea') }}" autofocus>
+                                        @if ($errors->has('linea'))
                                             <span class="error text-danger" for="input-linea">
                                                 {{ $errors->first('linea') }}
                                             </span>
-                                        @endif--}}
+                                        @endif
                                     </div>
                                 </div>
                             </div>

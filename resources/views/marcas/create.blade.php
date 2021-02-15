@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage'=>'users','titlePage'=>'Agregar Marca'])
+@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Agregar Marca'])
 @section('content')
     <div class="content">
         <div class="container-fluid">

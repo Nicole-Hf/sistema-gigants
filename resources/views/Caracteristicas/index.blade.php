@@ -6,7 +6,7 @@
         {{--Marca--}}
             <div class="col-sm-3">
                 <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('/img/brand.png') }}" alt="Card image cap">
                     <div class="card-body">
                         <div class="d-grid gap-2 col-lg-11 mx-auto">
                             <a href="{{ route('marcas.index') }}" class="btn btn-rose text-center"> Marcas </a>
@@ -16,8 +16,8 @@
             </div>
         {{--Línea--}}
             <div class="col-sm-3">
-                <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
+                <div class="card" style="width: 11rem;">
+                    <img class="card-img-top" src="{{ asset('/img/familia.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <div class="d-grid gap-2 col-lg-11 mx-auto">
                             <a href="{{ route('lineas.index') }}" class="btn btn-rose text-center"> Líneas </a>
@@ -28,7 +28,7 @@
         {{--Familia--}}
             <div class="col-sm-3">
                 <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('/img/modelo.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <div class="d-grid gap-2 col-lg-11 mx-auto">
                             <a href="#" class="btn btn-rose text-center"> Familias </a>
@@ -39,7 +39,7 @@
         {{--Modelo--}}
             <div class="col-sm-3">
                 <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('/img/linea2.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <div class="d-grid gap-2 col-lg-11 mx-auto">
                             <a href="#" class="btn btn-rose text-center"> Modelos </a>
@@ -50,7 +50,7 @@
         {{--Talla--}}
             <div class="col-sm-3">
                 <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('/img/talla.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <div class="d-grid gap-2 col-lg-11 mx-auto">
                             <a href="#" class="btn btn-rose text-center"> Tallas </a>
@@ -60,8 +60,8 @@
             </div>
         {{--Color--}}
             <div class="col-sm-3">
-                <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
+                <div class="card" style="width: 13rem;">
+                    <img class="card-img-top" src="{{ asset('/img/color.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <div class="d-grid gap-2 col-lg-11 mx-auto">
                             <a href="#" class="btn btn-rose text-center"> Colores </a>
@@ -72,7 +72,7 @@
         {{--Temporada--}}
             <div class="col-sm-3">
                 <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="{{ asset('/img/favicon.png') }}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('/img/temporada1.png') }}" alt="Card image cap">
                     <div class="card-body">
                         <div class="d-grid gap-2 col-lg-12 mx-auto">
                             <a href="#" class="btn btn-rose text-center"> Temporadas </a>
