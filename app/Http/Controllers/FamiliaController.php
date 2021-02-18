@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FamiliaCreateRequest;
 use App\Http\Requests\FamiliaEditRequest;
 use App\Models\Familia;
 use Illuminate\Http\Request;
@@ -16,7 +15,7 @@ class FamiliaController extends Controller
      */
     public function index()
     {
-        $familias = Familia::all();
+        $familias = Familia::paginate(5);
         return view('familias.index',compact('familias'));
     }
 
@@ -36,10 +35,10 @@ class FamiliaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FamiliaEditRequest $request)
     {
         Familia::create($request->all());
-        return redirect()->back();
+        return redirect()->route('familias.index')->with('mensaje','Datos guardados correctamente');
     }
 
     /**
@@ -59,9 +58,9 @@ class FamiliaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Familia &$familia)
+    public function edit(Familia $familia)
     {
-        //
+        return view('familias.edit',compact('familia'));
     }
 
     /**
@@ -73,7 +72,11 @@ class FamiliaController extends Controller
      */
     public function update(FamiliaEditRequest $request, $id)
     {
-        //
+        $familia = Familia::findOrFail($id);
+        $datos = $request->all();
+        $familia->update($datos);
+
+        return redirect()->route('familias.index')->with('mensaje','Datos actualizados correctamente');
     }
 
     /**
@@ -84,6 +87,7 @@ class FamiliaController extends Controller
      */
     public function destroy(Familia $familia)
     {
-        //
+        $familia->delete();
+        return back()->with('mensaje','Eliminado correctamente');
     }
 }

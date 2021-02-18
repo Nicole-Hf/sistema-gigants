@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="card">
                         {{--Header--}}
                         <div class="card-header card-header-rose">
@@ -34,7 +34,7 @@
                                     <th>#</th>
                                     <th>Nombre</th>
                                     <th>Fecha de Creación</th>
-                                    <th class="text-right">Acciones</th>
+                                    <th>Acciones</th>
                                     </thead>
                                     {{--Llamar a las marcas--}}
                                     <tbody>
@@ -43,7 +43,7 @@
                                             <td>{{ $marca->id }}</td>
                                             <td>{{ $marca->marca }}</td>
                                             <td>{{ $marca->created_at }}</td>
-                                            <td class="td-actions text-right">
+                                            <td class="td-actions">
                                                 {{--Editar Marca--}}
                                                 <a href="{{ route('marcas.edit',$marca->id) }}" class="btn btn-warning">
                                                     <i class="material-icons">edit</i>

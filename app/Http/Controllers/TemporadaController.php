@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Temporada;
 use Illuminate\Http\Request;
+use App\Http\Requests\TemporadaRequest;
 
 class TemporadaController extends Controller
 {
@@ -13,7 +15,8 @@ class TemporadaController extends Controller
      */
     public function index()
     {
-        //
+        $temporadas = Temporada::paginate(5);
+        return view('temporadas.index',compact('temporadas'));
     }
 
     /**
@@ -23,7 +26,7 @@ class TemporadaController extends Controller
      */
     public function create()
     {
-        //
+        return view('temporadas.create');
     }
 
     /**
@@ -32,9 +35,10 @@ class TemporadaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TemporadaRequest $request)
     {
-        //
+        Temporada::create($request->all());
+        return redirect()->route('temporadas.index')->with('mensaje','Datos guardados correctamente');
     }
 
     /**
@@ -54,9 +58,9 @@ class TemporadaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Temporada $temporada)
     {
-        //
+        return view('temporadas.edit',compact('temporada'));
     }
 
     /**
@@ -66,9 +70,13 @@ class TemporadaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TemporadaRequest $request, $id)
     {
-        //
+        $temporada = Temporada::findOrFail($id);
+        $datos = $request->all();
+        $temporada->update($datos);
+
+        return redirect()->route('temporadas.index')->with('mensaje','Datos actualizados correctamente');
     }
 
     /**
@@ -77,8 +85,9 @@ class TemporadaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Temporada $temporada)
     {
-        //
+        $temporada->delete();
+        return back()->with('mensaje','Eliminado correctamente');
     }
 }

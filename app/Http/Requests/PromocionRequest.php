@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LineaCreateRequest extends FormRequest
+class PromocionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class LineaCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'linea' => 'required|string|max:60|unique:lineas'
+            'precio'=>'required|numeric',
+            'ini_date'=>'nullable|date',
+            'fin_date'=>'nullable|date|after:ini_date',
         ];
     }
 }

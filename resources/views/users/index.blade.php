@@ -43,34 +43,6 @@
                                     </thead>
                                     {{--Llamar a los usuarios--}}
                                     <tbody>
-                                    {{--@foreach($users as $user)
-                                    <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->created_at }}</td>
-                                        <td class="td-actions text-right">
-                                            {{--Ver Usuario--}}
-                                            {{--<a href="{{ route('users.show', $user->id) }}" class="btn btn-info">
-                                                <i class="material-icons">person</i>
-                                            </a>
-                                            {{--Editar Usuario--}}
-                                            {{--<a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">
-                                                <i class="material-icons">edit</i>
-                                            </a>
-                                            {{--Eliminar Usuario--}}
-                                            {{--<form action="{{ route('users.delete',$user->id) }}" method="post"
-                                                  style="display: inline-block;"
-                                                  onsubmit="return confirm('¿Está seguro?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger" type="submit">
-                                                    <i class="material-icons">close</i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @endforeach--}}
                                     @foreach($personas as $persona)
                                         <tr>
                                             <td>{{ $persona->id }}</td>
@@ -115,5 +87,4 @@
             </div>
         </div>
     </div>
-
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Familia'])
+@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Talla'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -13,10 +13,10 @@
             @endif
             <div class="row">
                 <div class="col-md-12">
-                    {{--Boton agregar--}}
+                    {{--boton agregar--}}
                     <div class="row">
                         <div class="col-12 text-left">
-                            <a href="{{ route('familias.create') }}" class="btn btn-rose"> Agregar Familia </a>
+                            <a href="{{ route('tallas.create') }}" class="btn btn-rose"> Agregar Talla </a>
                         </div>
                     </div>
                     <div class="row">
@@ -24,7 +24,7 @@
                             <div class="card">
                                 {{--Titulo de la tabla--}}
                                 <div class="card-header card-header-rose">
-                                    <h4 class="card-title"> Familias </h4>
+                                    <h4 class="card-title"> Tallas </h4>
                                 </div>
                                 {{--Cuerpo--}}
                                 <div class="card-body">
@@ -37,18 +37,18 @@
                                             <th> Acciones </th>
                                             </thead>
                                             <tbody>
-                                            @foreach( $familias as $familia)
+                                            @foreach( $tallas as $talla )
                                                 <tr>
-                                                    <td>{{ $familia->id }}</td>
-                                                    <td>{{ $familia->nombre }}</td>
-                                                    <td>{{ $familia->created_at }}</td>
+                                                    <td>{{ $talla->id }}</td>
+                                                    <td>{{ $talla->talla }}</td>
+                                                    <td>{{ $talla->created_at }}</td>
                                                     <td class="td-actions">
                                                         {{--Editar--}}
-                                                        <a href="{{ route('familias.edit',$familia->id) }}" class="btn btn-warning">
+                                                        <a href="{{ route('tallas.edit',$talla->id) }}" class="btn btn-warning">
                                                             <i class="material-icons">edit</i>
                                                         </a>
                                                         {{--Eliminar--}}
-                                                        <form action="{{ route('familias.delete',$familia->id) }}"
+                                                        <form action="{{ route('tallas.delete',$talla->id) }}"
                                                               method="POST"
                                                               style="display: inline-block"
                                                               onsubmit="return confirm('¿Está seguro?')">
@@ -67,7 +67,7 @@
                                 </div>
                                 {{--Botones--}}
                                 <div class="card-footer mr-auto">
-                                    {{ $familias->links() }}
+                                    {{ $tallas->links() }}
                                 </div>
                             </div>
                         </div>

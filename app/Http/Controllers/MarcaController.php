@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MarcaCreateRequest;
 use App\Http\Requests\MarcaEditRequest;
 use App\Models\Marca;
 use Illuminate\Http\Request;
@@ -36,11 +35,10 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MarcaCreateRequest $request)
+    public function store(MarcaEditRequest $request)
     {
         Marca::create($request->all());
-
-        return redirect()->route('marcas.index')->with('mensaje','Marca creada correctamente');
+        return redirect()->route('marcas.index')->with('mensaje','Datos guardados correctamente');
     }
 
     /**

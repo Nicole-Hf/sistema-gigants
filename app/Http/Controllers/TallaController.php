@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Talla;
 use Illuminate\Http\Request;
+use App\Http\Requests\TallaRequest;
 
 class TallaController extends Controller
 {
@@ -13,7 +15,8 @@ class TallaController extends Controller
      */
     public function index()
     {
-        //
+        $tallas = Talla::paginate(5);
+        return view('tallas.index',compact('tallas'));
     }
 
     /**
@@ -23,7 +26,7 @@ class TallaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tallas.create');
     }
 
     /**
@@ -32,9 +35,10 @@ class TallaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TallaRequest $request)
     {
-        //
+        Talla::create($request->all());
+        return redirect()->route('tallas.index')->with('mensaje','Datos guardados correctamente');
     }
 
     /**
@@ -54,9 +58,9 @@ class TallaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Talla $talla)
     {
-        //
+        return view('tallas.edit',compact('talla'));
     }
 
     /**
@@ -66,9 +70,13 @@ class TallaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TallaRequest $request, $id)
     {
-        //
+        $talla = Talla::findOrFail($id);
+        $datos = $request->all();
+        $talla->update($datos);
+
+        return redirect()->route('tallas.index')->with('mensaje','Datos actualizados correctamente');
     }
 
     /**
@@ -77,8 +85,9 @@ class TallaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Talla $talla)
     {
-        //
+        $talla->delete();
+        return back()->with('mensaje','Eliminado correctamente');
     }
 }

@@ -25,9 +25,9 @@ class CreateProductosTable extends Migration
             $table->unsignedBigInteger('talla_id');
             $table->unsignedBigInteger('color_id');
             $table->unsignedBigInteger('modelo_id');
-            $table->unsignedBigInteger('promocion_id');
+            $table->unsignedBigInteger('promocion_id')->nullable(true);
             $table->unsignedBigInteger('temporada_id');
-            $table->unsignedBigInteger('sector_id');
+            $table->unsignedBigInteger('sector_id')->nullable(true);
             $table->timestamps();
 
             $table->softDeletes();

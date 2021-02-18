@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LineaEditRequest extends FormRequest
+class ColorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class LineaEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|string|unique:lineas,nombre,'.$this->route('id')
+            'color'=>"required|string|unique:colores,color,".$this->route('id')
         ];
     }
 }

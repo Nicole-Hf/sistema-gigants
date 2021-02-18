@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Familia'])
+@extends('layouts.main',['activePage'=>'caracteristicas','titlePage'=>'Temporada'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -16,7 +16,7 @@
                     {{--Boton agregar--}}
                     <div class="row">
                         <div class="col-12 text-left">
-                            <a href="{{ route('familias.create') }}" class="btn btn-rose"> Agregar Familia </a>
+                            <a href="{{ route('temporadas.create') }}" class="btn btn-rose"> Agregar Temporada </a>
                         </div>
                     </div>
                     <div class="row">
@@ -24,7 +24,7 @@
                             <div class="card">
                                 {{--Titulo de la tabla--}}
                                 <div class="card-header card-header-rose">
-                                    <h4 class="card-title"> Familias </h4>
+                                    <h4 class="card-title"> Temporadas </h4>
                                 </div>
                                 {{--Cuerpo--}}
                                 <div class="card-body">
@@ -37,18 +37,18 @@
                                             <th> Acciones </th>
                                             </thead>
                                             <tbody>
-                                            @foreach( $familias as $familia)
+                                            @foreach( $temporadas as $temporada)
                                                 <tr>
-                                                    <td>{{ $familia->id }}</td>
-                                                    <td>{{ $familia->nombre }}</td>
-                                                    <td>{{ $familia->created_at }}</td>
+                                                    <td>{{ $temporada->id }}</td>
+                                                    <td>{{ $temporada->descripcion }}</td>
+                                                    <td>{{ $temporada->created_at }}</td>
                                                     <td class="td-actions">
                                                         {{--Editar--}}
-                                                        <a href="{{ route('familias.edit',$familia->id) }}" class="btn btn-warning">
+                                                        <a href="{{ route('temporadas.edit', $temporada->id) }}" class="btn btn-warning">
                                                             <i class="material-icons">edit</i>
                                                         </a>
                                                         {{--Eliminar--}}
-                                                        <form action="{{ route('familias.delete',$familia->id) }}"
+                                                        <form action="{{ route('temporadas.delete',$temporada->id) }}"
                                                               method="POST"
                                                               style="display: inline-block"
                                                               onsubmit="return confirm('¿Está seguro?')">
@@ -67,7 +67,7 @@
                                 </div>
                                 {{--Botones--}}
                                 <div class="card-footer mr-auto">
-                                    {{ $familias->links() }}
+                                    {{ $temporadas->links() }}
                                 </div>
                             </div>
                         </div>

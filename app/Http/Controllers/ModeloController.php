@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Modelo;
 use Illuminate\Http\Request;
+use App\Http\Requests\ModeloRequest;
 
 class ModeloController extends Controller
 {
@@ -13,7 +15,8 @@ class ModeloController extends Controller
      */
     public function index()
     {
-        //
+        $modelos = Modelo::paginate(5);
+        return view('modelos.index',compact('modelos'));
     }
 
     /**
@@ -23,7 +26,7 @@ class ModeloController extends Controller
      */
     public function create()
     {
-        //
+        return view('modelos.create');
     }
 
     /**
@@ -32,9 +35,10 @@ class ModeloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ModeloRequest $request)
     {
-        //
+        Modelo::create($request->all());
+        return redirect()->route('modelos.index')->with('mensaje','Datos guardados correctamente');
     }
 
     /**
@@ -54,9 +58,9 @@ class ModeloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Modelo $modelo)
     {
-        //
+        return view('modelos.edit',compact('modelo'));
     }
 
     /**
@@ -66,9 +70,13 @@ class ModeloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ModeloRequest $request, $id)
     {
-        //
+        $modelo = Modelo::findOrFail($id);
+        $datos = $request->all();
+        $modelo->update($datos);
+
+        return redirect()->route('modelos.index')->with('mensaje','Datos actualizados correctamente');
     }
 
     /**
@@ -77,8 +85,9 @@ class ModeloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Modelo $modelo)
     {
-        //
+        $modelo->delete();
+        return back()->with('mensaje','Eliminado correctamente');
     }
 }

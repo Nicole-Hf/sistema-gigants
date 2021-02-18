@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FamiliaCreateRequest extends FormRequest
+class TemporadaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class FamiliaCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|string|max:60|unique:familias'
+            'descripcion'=>"required|string|unique:temporadas,descripcion,".$this->route('id')
         ];
     }
 }

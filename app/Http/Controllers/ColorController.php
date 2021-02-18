@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
 use Illuminate\Http\Request;
+use App\Http\Requests\ColorRequest;
 
 class ColorController extends Controller
 {
@@ -13,7 +15,8 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        $colores = Color::paginate(5);
+        return view('colores.index',compact('colores'));
     }
 
     /**
@@ -23,7 +26,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        //
+        return view('colores.create');
     }
 
     /**
@@ -32,9 +35,10 @@ class ColorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ColorRequest $request)
     {
-        //
+        Color::create($request->all());
+        return redirect()->route('colores.index')->with('mensaje','Datos guardados correctamente');
     }
 
     /**
@@ -54,9 +58,9 @@ class ColorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Color $color)
     {
-        //
+        return view('colores.edit',compact('color'));
     }
 
     /**
@@ -66,9 +70,13 @@ class ColorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ColorRequest $request, $id)
     {
-        //
+        $color = Color::findOrFail($id);
+        $datos = $request->all();
+        $color->update($datos);
+
+        return redirect()->route('colores.index')->with('mensaje','Datos actualizados correctamente');
     }
 
     /**
@@ -77,8 +85,9 @@ class ColorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Color $color)
     {
-        //
+        $color->delete();
+        return back()->with('mensaje','Eliminado correctamente');
     }
 }

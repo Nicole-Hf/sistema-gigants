@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Linea;
+use App\Models\Marca;
+use App\Models\Familia;
+use App\Models\Producto;
+use App\Models\Talla;
+use App\Models\Color;
+use App\Models\Modelo;
+use App\Models\Temporada;
+use App\Models\Promocion;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -13,7 +22,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        return view('productos.index');
     }
 
     /**
@@ -23,7 +32,26 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        $lineas = Linea::all();
+        $marcas = Marca::all();
+        $familias = Familia::all();
+        $tallas = Talla::all();
+        $colores = Color::all();
+        $modelos = Modelo::all();
+        $temporadas = Temporada::all();
+        $promociones = Promocion::all();
+
+        return view('productos.create',
+            [
+                'lineas'=>$lineas,
+                'marcas'=>$marcas,
+                'familias'=>$familias,
+                'tallas'=>$tallas,
+                'colores'=>$colores,
+                'modelos'=>$modelos,
+                'temporadas'=>$temporadas,
+                'promociones'=>$promociones
+            ]);
     }
 
     /**
@@ -34,7 +62,8 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Producto::create($request->all());
+        return redirect()->route('productos.index');
     }
 
     /**

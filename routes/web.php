@@ -17,8 +17,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/caracteristicas',[App\Http\Controllers\CaracteristicaController::class,'index'])->name('caracteristicas.index');
+Route::get
+('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get
+('/caracteristicas',[App\Http\Controllers\CaracteristicaController::class,'index'])->name('caracteristicas.index');
 
 //RUTAS DE USUARIOS
 Route::get
@@ -37,25 +39,121 @@ Route::delete
 ('/user/{id}',[App\Http\Controllers\UserController::class,'destroy'])->name('users.delete');
 
 //RUTAS DE MARCAS
-Route::get('/caracteristicas/marcas',
-    [App\Http\Controllers\MarcaController::class,'index'])->name('marcas.index');
-Route::get('/caracteristicas/marcas/create',
-    [App\Http\Controllers\MarcaController::class,'create'])->name('marcas.create');
-Route::post('/caracteristicas/marcas',
-    [App\Http\Controllers\MarcaController::class,'store'])->name('marcas.store');
-Route::get('/caracteristicas/marcas/{marca}/edit',
-    [App\Http\Controllers\MarcaController::class,'edit'])->name('marcas.edit');
-Route::put('/caracteristicas/marcas/{marca}',
-    [App\Http\Controllers\MarcaController::class,'update'])->name('marcas.update');
-Route::delete('/caracteristicas/marcas/{marca}',
-    [App\Http\Controllers\MarcaController::class,'destroy'])->name('marcas.delete');
+Route::get
+('/caracteristicas/marcas',[App\Http\Controllers\MarcaController::class,'index'])->name('marcas.index');
+Route::get
+('/caracteristicas/marcas/create',[App\Http\Controllers\MarcaController::class,'create'])->name('marcas.create');
+Route::post
+('/caracteristicas/marcas',[App\Http\Controllers\MarcaController::class,'store'])->name('marcas.store');
+Route::get
+('/caracteristicas/marcas/{marca}/edit',[App\Http\Controllers\MarcaController::class,'edit'])->name('marcas.edit');
+Route::put
+('/caracteristicas/marcas/{marca}',[App\Http\Controllers\MarcaController::class,'update'])->name('marcas.update');
+Route::delete
+('/caracteristicas/marcas/{marca}',[App\Http\Controllers\MarcaController::class,'destroy'])->name('marcas.delete');
 
 //RUTAS DE LINEAS
-Route::get('/caracteristicas/lineas/create',[App\Http\Controllers\LineaController::class,'create'])->name('lineas.create');
-Route::post('/caracteristicas/lineas',[App\Http\Controllers\LineaController::class,'store'])->name('lineas.store');
-
+Route::get
+('/caracteristicas/lineas/create',[App\Http\Controllers\LineaController::class,'create'])->name('lineas.create');
+Route::post
+('/caracteristicas/lineas',[App\Http\Controllers\LineaController::class,'store'])->name('lineas.store');
+Route::get
+('/caracteristicas/lineas',[App\Http\Controllers\LineaController::class,'index'])->name('lineas.index');
+Route::get
+('/caracteristicas/lineas/{linea}/edit',[App\Http\Controllers\LineaController::class,'edit'])->name('lineas.edit');
+Route::put
+('/caracteristicas/lineas/{linea}',[App\Http\Controllers\LineaController::class,'update'])->name('lineas.update');
+Route::delete
+('/caracteristicas/lineas/{linea}',[App\Http\Controllers\LineaController::class,'destroy'])->name('lineas.delete');
 
 //RUTAS DE FAMILIAS
-Route::get('/caracteristicas/familias/create',[App\Http\Controllers\FamiliaController::class,'create'])->name('familias.create');
-Route::post('/caracteristicas/familias', [App\Http\Controllers\FamiliaController::class,'store'])->name('familias.store');
+Route::get
+('/caracteristicas/familias/create',[App\Http\Controllers\FamiliaController::class,'create'])->name('familias.create');
+Route::post
+('/caracteristicas/familias',[App\Http\Controllers\FamiliaController::class,'store'])->name('familias.store');
+Route::get
+('/caracteristicas/familias',[App\Http\Controllers\FamiliaController::class,'index'])->name('familias.index');
+Route::get
+('/caracteristicas/familias/{familia}/edit',[App\Http\Controllers\FamiliaController::class,'edit'])->name('familias.edit');
+Route::put
+('/caracteristicas/familias/{familia}',[App\Http\Controllers\FamiliaController::class,'update'])->name('familias.update');
+Route::delete
+('/caracteristicas/familias/{familia}',[App\Http\Controllers\FamiliaController::class,'destroy'])->name('familias.delete');
 
+//RUTAS DE COLORES
+Route::get
+('/caracteristicas/colores/create',[App\Http\Controllers\ColorController::class,'create'])->name('colores.create');
+Route::post
+('/caracteristicas/colores',[App\Http\Controllers\ColorController::class,'store'])->name('colores.store');
+Route::get
+('/caracteristicas/colores',[App\Http\Controllers\ColorController::class,'index'])->name('colores.index');
+Route::get
+('/caracteristicas/colores/{color}/edit',[App\Http\Controllers\ColorController::class,'edit'])->name('colores.edit');
+Route::put
+('/caracteristicas/colores/{color}',[App\Http\Controllers\ColorController::class,'update'])->name('colores.update');
+Route::delete
+('/caracteristicas/colores/{color}',[App\Http\Controllers\ColorController::class,'destroy'])->name('colores.delete');
+
+//RUTAS DE TALLAS
+Route::get
+('/caracteristicas/tallas/create', [App\Http\Controllers\TallaController::class,'create'])->name('tallas.create');
+Route::post
+('/caracteristicas/tallas',[App\Http\Controllers\TallaController::class,'store'])->name('tallas.store');
+Route::get
+('/caracteristicas/tallas',[App\Http\Controllers\TallaController::class,'index'])->name('tallas.index');
+Route::get
+('/caracteristicas/tallas/{talla}/edit',[App\Http\Controllers\TallaController::class,'edit'])->name('tallas.edit');
+Route::put
+('/caracteristicas/tallas/{talla}',[App\Http\Controllers\TallaController::class,'update'])->name('tallas.update');
+Route::delete
+('/caracteristicas/tallas/{talla}',[App\Http\Controllers\TallaController::class,'destroy'])->name('tallas.delete');
+
+//RUTAS DE MODELOS
+Route::get
+('/caracteristicas/modelos/create',[App\Http\Controllers\ModeloController::class,'create'])->name('modelos.create');
+Route::post
+('/caracteristicas/modelos',[App\Http\Controllers\ModeloController::class,'store'])->name('modelos.store');
+Route::get
+('/caracteristicas/modelos',[App\Http\Controllers\ModeloController::class,'index'])->name('modelos.index');
+Route::get
+('/caracteristicas/modelos/{modelo}/edit',[App\Http\Controllers\ModeloController::class,'edit'])->name('modelos.edit');
+Route::put
+('/caracteristicas/modelos/{modelo}',[App\Http\Controllers\ModeloController::class,'update'])->name('modelos.update');
+Route::delete
+('/caracteristicas/modelos/{modelo}',[App\Http\Controllers\ModeloController::class,'destroy'])->name('modelos.delete');
+
+//RUTAS DE TEMPORADAS
+Route::get
+('/caracteristicas/temporadas/create',[App\Http\Controllers\TemporadaController::class,'create'])->name('temporadas.create');
+Route::post
+('/caracteristicas/temporadas',[App\Http\Controllers\TemporadaController::class,'store'])->name('temporadas.store');
+Route::get
+('/caracteristicas/temporadas',[App\Http\Controllers\TemporadaController::class,'index'])->name('temporadas.index');
+Route::get
+('/caracteristicas/temporadas/{temporada}/edit',[App\Http\Controllers\TemporadaController::class,'edit'])->name('temporadas.edit');
+Route::put
+('/caracteristicas/temporadas/{temporada}',[App\Http\Controllers\TemporadaController::class,'update'])->name('temporadas.update');
+Route::delete
+('/caracteristicas/temporadas/{temporada}',[App\Http\Controllers\TemporadaController::class,'destroy'])->name('temporadas.delete');
+
+//RUTAS DE PROMOCION
+Route::get
+('/caracteristicas/promociones/create',[App\Http\Controllers\PromocionController::class,'create'])->name('promociones.create');
+Route::post
+('/caracteristicas/promociones',[App\Http\Controllers\PromocionController::class,'store'])->name('promociones.store');
+Route::get
+('/caracteristicas/promociones',[App\Http\Controllers\PromocionController::class,'index'])->name('promociones.index');
+Route::get
+('/caracteristicas/promociones/{promocion}/edit',[App\Http\Controllers\PromocionController::class,'edit'])->name('promociones.edit');
+Route::put
+('/caracteristicas/promociones/{promocion}',[App\Http\Controllers\PromocionController::class,'update'])->name('promociones.update');
+Route::delete
+('/caracteristicas/promociones/{promocion}',[App\Http\Controllers\PromocionController::class,'destroy'])->name('promociones.delete');
+
+//RUTAS DE PRODUCTOS
+Route::get
+('/productos/create',[App\Http\Controllers\ProductoController::class,'create'])->name('productos.create');
+Route::post
+('/productos',[App\Http\Controllers\ProductoController::class,'store'])->name('productos.store');
+Route::get
+('/productos',[App\Http\Controllers\ProductoController::class,'index'])->name('productos.index');

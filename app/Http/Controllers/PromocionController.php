@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PromocionRequest;
+use App\Models\Promocion;
 use Illuminate\Http\Request;
 
 class PromocionController extends Controller
@@ -13,7 +15,8 @@ class PromocionController extends Controller
      */
     public function index()
     {
-        //
+        $promociones = Promocion::all();
+        return view('promociones.index',compact('promociones'));
     }
 
     /**
@@ -23,7 +26,7 @@ class PromocionController extends Controller
      */
     public function create()
     {
-        //
+        return view('promociones.create');
     }
 
     /**
@@ -32,9 +35,10 @@ class PromocionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PromocionRequest $request)
     {
-        //
+        Promocion::create($request->all());
+        return redirect()->route('promociones.index');
     }
 
     /**
@@ -54,9 +58,9 @@ class PromocionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Promocion $promocion)
     {
-        //
+        return view('promociones.edit',compact('promocion'));
     }
 
     /**
@@ -66,9 +70,13 @@ class PromocionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PromocionRequest $request, $id)
     {
-        //
+        $promocion = Promocion::findOrFail($id);
+        $datos = $request->all();
+        $promocion->update($datos);
+
+        return redirect()->route('promociones.index');
     }
 
     /**
@@ -77,8 +85,9 @@ class PromocionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Promocion $promocion)
     {
-        //
+        $promocion->delete();
+        return back();
     }
 }
