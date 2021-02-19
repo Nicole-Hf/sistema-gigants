@@ -157,3 +157,11 @@ Route::post
 ('/productos',[App\Http\Controllers\ProductoController::class,'store'])->name('productos.store');
 Route::get
 ('/productos',[App\Http\Controllers\ProductoController::class,'index'])->name('productos.index');
+Route::get
+('/productos/{producto}/edit',[App\Http\Controllers\ProductoController::class,'edit'])->name('productos.edit');
+Route::put
+('/productos/{producto}',[App\Http\Controllers\ProductoController::class,'update'])->name('productos.update');
+Route::get
+('/productos/{producto}',[App\Http\Controllers\ProductoController::class,'show'])->name('productos.show');
+Route::delete
+('/productos/{producto}',[App\Http\Controllers\ProductoController::class,'destroy'])->name('productos.delete');

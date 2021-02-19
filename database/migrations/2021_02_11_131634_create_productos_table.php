@@ -18,16 +18,15 @@ class CreateProductosTable extends Migration
             $table->string('descripcion',200);
             $table->string('codigo_barra');
             $table->float('precio');
-            $table->date('fecha_creacion');
             $table->unsignedBigInteger('linea_id');
             $table->unsignedBigInteger('marca_id');
             $table->unsignedBigInteger('familia_id');
             $table->unsignedBigInteger('talla_id');
             $table->unsignedBigInteger('color_id');
             $table->unsignedBigInteger('modelo_id');
-            $table->unsignedBigInteger('promocion_id')->nullable(true);
+            $table->unsignedBigInteger('promocion_id')->nullable();
             $table->unsignedBigInteger('temporada_id');
-            $table->unsignedBigInteger('sector_id')->nullable(true);
+            $table->unsignedBigInteger('sector_id')->nullable();
             $table->timestamps();
 
             $table->softDeletes();

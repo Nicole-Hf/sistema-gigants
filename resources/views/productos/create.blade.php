@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="#" method="post" class="form-horizontal">
+                    <form action="{{ route('productos.store') }}" method="post" class="form-horizontal">
                         @csrf
                         <div class="card">
                             {{--Header--}}
@@ -20,14 +20,29 @@
                                         <select  name="linea_id" id="inputLinea_id" class="form-control">
                                             <option value="">-- Seleccione la línea --</option>
                                             @foreach($lineas as $linea)
-                                                <option value="{{ $linea->id }}">{{ $linea->nombre }}</option>
+                                                <option value="{{ $linea->id }}">
+                                                    {{ $linea->nombre }}
+                                                </option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('linea_id'))
+                                            <span class="error text-danger" for="input-linea_id">
+                                                {{ $errors->first('linea_id') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     {{--Precio--}}
                                     <label for="precio" class="col-sm-2 col-form-label">Precio</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" name="precio">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="precio"
+                                               value="{{ old('precio') }}">
+                                        @if ($errors->has('precio'))
+                                            <span class="error text-danger" for="input-precio">
+                                                {{ $errors->first('precio') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
@@ -37,9 +52,16 @@
                                         <select name="marca_id" id="inputMarca_id" class="form-control">
                                             <option value="">-- Seleccione la marca --</option>
                                             @foreach($marcas as $marca)
-                                                <option value="{{ $marca->id }}">{{ $marca->marca }}</option>
+                                                <option value="{{ $marca->id }}">
+                                                    {{ $marca->marca }}
+                                                </option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('marca_id'))
+                                            <span class="error text-danger" for="input-marca_id">
+                                                {{ $errors->first('marca_id') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     {{--Promoción--}}
                                     <label for="promocion_id" class="col-sm-2 col-form-label">Promoción</label>
@@ -47,9 +69,16 @@
                                         <select name="promocion_id" id="inputPromocion_id" class="form-control">
                                             <option value="">-- Seleccione la promoción --</option>
                                             @foreach($promociones as $promocion)
-                                                <option value="{{ $promocion->id }}">{{ $promocion->precio }}</option>
+                                                <option value="{{ $promocion->id }}">
+                                                    {{ $promocion->precio }}
+                                                </option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('promocion_id'))
+                                            <span class="error text-danger" for="input-promocion_id">
+                                                {{ $errors->first('promocion_id') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
@@ -59,9 +88,16 @@
                                         <select name="familia_id" id="inputFamilia_id" class="form-control">
                                             <option value="">-- Seleccione la familia --</option>
                                             @foreach($familias as $familia)
-                                                <option value="{{ $familia->id }}">{{ $familia->nombre }}</option>
+                                                <option value="{{ $familia->id }}">
+                                                    {{ $familia->nombre }}
+                                                </option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('familia_id'))
+                                            <span class="error text-danger" for="input-familia_id">
+                                                {{ $errors->first('familia_id') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     {{--Entradas al inventario
                                     <label class="col-sm-7 col-form-label">Entradas al Inventario</label>--}}
@@ -73,9 +109,16 @@
                                         <select name="talla_id" id="inputTalla_id" class="form-control">
                                             <option value="">-- Seleccione la talla --</option>
                                             @foreach($tallas as $talla)
-                                                <option value="{{ $talla->id }}">{{ $talla->talla }}</option>
+                                                <option value="{{ $talla->id }}">
+                                                    {{ $talla->talla }}
+                                                </option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('talla_id'))
+                                            <span class="error text-danger" for="input-talla_id">
+                                                {{ $errors->first('talla_id') }}
+                                            </span>
+                                        @endif
                                     </div>
                                     {{--Almacén--}}
                                 </div>
@@ -86,9 +129,16 @@
                                         <select name="color_id" id="inputColor_id" class="form-control">
                                             <option value="">-- Seleccione el color --</option>
                                             @foreach($colores as $color)
-                                                <option value="{{ $color->id }}">{{ $color->color }}</option>
+                                                <option value="{{ $color->id }}">
+                                                    {{ $color->color }}
+                                                </option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('color_id'))
+                                            <span class="error text-danger" for="input-color_id">
+                                                {{ $errors->first('color_id') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 {{--Modelo--}}
@@ -98,9 +148,16 @@
                                         <select name="modelo_id" id="inputModelo_id" class="form-control">
                                             <option value="">-- Seleccione el modelo --</option>
                                             @foreach($modelos as $modelo)
-                                                <option value="{{ $modelo->id }}">{{ $modelo->descripcion }}</option>
+                                                <option value="{{ $modelo->id }}">
+                                                    {{ $modelo->descripcion }}
+                                                </option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('modelo_id'))
+                                            <span class="error text-danger" for="input-modelo_id">
+                                                {{ $errors->first('modelo_id') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 {{--Temporada--}}
@@ -110,30 +167,53 @@
                                         <select name="temporada_id" id="inputTemporada_id" class="form-control">
                                             <option value="">-- Seleccione la temporada --</option>
                                             @foreach($temporadas as $temporada)
-                                                <option value="{{ $temporada->id }}">{{ $temporada->descripcion }}</option>
+                                                <option value="{{ $temporada->id }}">
+                                                    {{ $temporada->descripcion }}
+                                                </option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('temporada_id'))
+                                            <span class="error text-danger" for="input-temporada_id">
+                                                {{ $errors->first('temporada_id') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 {{--Codigo de Barra--}}
                                 <div class="row">
                                     <label for="codigo_barra" class="col-sm-2 col-form-label">Código de Barra</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" name="codigo_barra">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="codigo_barra"
+                                               value="{{ old('codigo_barra') }}">
+                                        @if ($errors->has('codigo_barra'))
+                                            <span class="error text-danger" for="input-codigo_barra">
+                                                {{ $errors->first('codigo_barra') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 {{--Descripcion--}}
                                 <div class="row">
                                     <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" name="descripcion">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="descripcion"
+                                               value="{{ old('descripcion') }}">
+                                        @if ($errors->has('descripcion'))
+                                            <span class="error text-danger" for="input-descripcion">
+                                                {{ $errors->first('descripcion') }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                             {{--Botones--}}
                             <div class="card-footer ml-auto mr-auto">
                                 <button type="submit" class="btn btn-rose">Guardar Datos</button>
-                                <a class="btn btn-rose" href="#">Cancelar</a>
+                                <a class="btn btn-rose" href="{{ route('productos.index') }}">Cancelar</a>
                             </div>
                         </div>
                     </form>

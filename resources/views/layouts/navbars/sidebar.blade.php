@@ -23,7 +23,7 @@
                 <div class="collapse show" id="laravelExample">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'productos' ? ' active' : '' }}">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('productos.index') }}">
                                 <i class="material-icons">local_mall</i>
                                 <span class="sidebar-normal">{{ __('Producto') }} </span>
                             </a>
@@ -39,13 +39,13 @@
             </li>
             {{--Paquete de Gestionar Compras--}}
             <li class="nav-item {{ ($activePage == 'compra' || $activePage == 'proveedor') ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#compra" aria-expanded="true">
                     <i class="material-icons">store</i>
                     <p>{{ __('Gestionar Compra') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="#">
+                <div class="collapse show" id="compra">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'compra' ? ' active' : '' }}">
                             <a class="nav-link" href="#">
@@ -64,13 +64,13 @@
             </li>
             {{--Paquete de Gestionar Ventas--}}
             <li class="nav-item {{ ($activePage == 'venta' || $activePage == 'cliente') ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#ventas" aria-expanded="true">
                     <i class="material-icons">local_grocery_store</i>
                     <p>{{ __('Gestionar Venta') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="#">
+                <div class="collapse show" id="ventas">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'venta' ? ' active' : '' }}">
                             <a class="nav-link" href="#">
