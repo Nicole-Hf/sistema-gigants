@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AlmacenRequest;
+use App\Models\Almacen;
+use App\Models\Talla;
+use http\Exception\BadConversionException;
 use Illuminate\Http\Request;
 
 class AlmacenController extends Controller
@@ -13,7 +17,8 @@ class AlmacenController extends Controller
      */
     public function index()
     {
-        //
+        $almacenes = Almacen::all();
+        return view('almacenes.index',compact('almacenes'));
     }
 
     /**
@@ -23,7 +28,7 @@ class AlmacenController extends Controller
      */
     public function create()
     {
-        //
+        return view('almacenes.create');
     }
 
     /**
@@ -32,9 +37,10 @@ class AlmacenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlmacenRequest $request)
     {
-        //
+        Almacen::create($request->all());
+        return redirect()->route('almacenes.index')->with('mensaje','Datos guardados correctamente');
     }
 
     /**
@@ -54,9 +60,9 @@ class AlmacenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Almacen $almacen)
     {
-        //
+        return view('almacenes.edit',compact('almacen'));
     }
 
     /**
@@ -66,9 +72,13 @@ class AlmacenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AlmacenRequest $request, $id)
     {
-        //
+        $almacen = Almacen::findOrFail($id);
+        $datos = $request->all();
+        $almacen->update($datos);
+
+        return redirect()->route('almacenes.index')->with('mensaje','Datos actualizados correctamente');
     }
 
     /**
@@ -77,8 +87,9 @@ class AlmacenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Almacen $almacen)
     {
-        //
+        $almacen->delete();
+        return back();
     }
 }

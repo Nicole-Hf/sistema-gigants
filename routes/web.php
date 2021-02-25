@@ -165,3 +165,31 @@ Route::get
 ('/productos/{producto}',[App\Http\Controllers\ProductoController::class,'show'])->name('productos.show');
 Route::delete
 ('/productos/{producto}',[App\Http\Controllers\ProductoController::class,'destroy'])->name('productos.delete');
+
+//RUTAS DE ALMACEN
+Route::get
+('/almacenes/create',[App\Http\Controllers\AlmacenController::class,'create'])->name('almacenes.create');
+Route::post
+('/almacenes',[App\Http\Controllers\AlmacenController::class,'store'])->name('almacenes.store');
+Route::get
+('/almacenes',[App\Http\Controllers\AlmacenController::class,'index'])->name('almacenes.index');
+Route::get
+('/almacenes/{almacen}/edit',[App\Http\Controllers\AlmacenController::class,'edit'])->name('almacenes.edit');
+Route::put
+('/almacenes/{almacen}',[App\Http\Controllers\AlmacenController::class,'update'])->name('almacenes.update');
+Route::delete
+('/almacenes/{almacen}',[App\Http\Controllers\AlmacenController::class,'destroy'])->name('almacenes.delete');
+
+//RUTAS DE SECTOR
+Route::get
+('/almacen/sectores/create',[App\Http\Controllers\SectorController::class,'create'])->name('sectores.create');
+Route::post
+('/almacen/sectores',[App\Http\Controllers\SectorController::class,'store'])->name('sectores.store');
+Route::get
+('/almacen/sectores',[App\Http\Controllers\SectorController::class,'index'])->name('sectores.index');
+Route::get
+('/almacen/sectores/{sector}/edit',[App\Http\Controllers\SectorController::class,'edit'])->name('sectores.edit');
+Route::put
+('/almacen/sectores/{sector}',[App\Http\Controllers\SectorController::class,'update'])->name('sectores.update');
+Route::delete
+('/almacen/sectores/{sector}',[App\Http\Controllers\SectorController::class,'destroy'])->name('sectores.delete');

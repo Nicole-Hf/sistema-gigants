@@ -7,6 +7,7 @@ use App\Models\Linea;
 use App\Models\Marca;
 use App\Models\Familia;
 use App\Models\Producto;
+use App\Models\Sector;
 use App\Models\Talla;
 use App\Models\Color;
 use App\Models\Modelo;
@@ -42,6 +43,7 @@ class ProductoController extends Controller
         $modelos = Modelo::all();
         $temporadas = Temporada::all();
         $promociones = Promocion::all();
+        $sectores = Sector::all();
 
         return view('productos.create',
             [
@@ -52,7 +54,8 @@ class ProductoController extends Controller
                 'colores'=>$colores,
                 'modelos'=>$modelos,
                 'temporadas'=>$temporadas,
-                'promociones'=>$promociones
+                'promociones'=>$promociones,
+                'sectores'=>$sectores
             ]);
     }
 
@@ -77,27 +80,9 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::findOrFail($id);
-        $lineas = Linea::all();
-        $marcas = Marca::all();
-        $familias = Familia::all();
-        $tallas = Talla::all();
-        $colores = Color::all();
-        $modelos = Modelo::all();
-        $temporadas = Temporada::all();
-        $promociones = Promocion::all();
+        $producto->load('linea','marca','familia','talla','color','modelo','promocion','temporada');
 
-        return view('productos.show',
-            [
-                'producto'=>$producto,
-                'lineas'=>$lineas,
-                'marcas'=>$marcas,
-                'familias'=>$familias,
-                'tallas'=>$tallas,
-                'colores'=>$colores,
-                'modelos'=>$modelos,
-                'temporadas'=>$temporadas,
-                'promociones'=>$promociones
-            ]);
+        return view('productos.show', ['producto'=>$producto]);
     }
 
     /**
@@ -117,6 +102,7 @@ class ProductoController extends Controller
         $modelos = Modelo::all();
         $temporadas = Temporada::all();
         $promociones = Promocion::all();
+        $sectores = Sector::all();
 
         return view('productos.edit',
             [
@@ -128,7 +114,8 @@ class ProductoController extends Controller
                 'colores'=>$colores,
                 'modelos'=>$modelos,
                 'temporadas'=>$temporadas,
-                'promociones'=>$promociones
+                'promociones'=>$promociones,
+                'sectores'=>$sectores
             ]);
     }
 

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SectorRequest;
+use App\Models\Almacen;
+use App\Models\Sector;
 use Illuminate\Http\Request;
 
 class SectorController extends Controller
@@ -13,7 +16,9 @@ class SectorController extends Controller
      */
     public function index()
     {
-        //
+        $sectores = Sector::all();
+        $sectores->load('almacen');
+        return view('sectores.index',compact('sectores'));
     }
 
     /**
@@ -23,7 +28,8 @@ class SectorController extends Controller
      */
     public function create()
     {
-        //
+        $almacenes = Almacen::all();
+        return view('sectores.create',compact('almacenes'));
     }
 
     /**
@@ -32,9 +38,10 @@ class SectorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SectorRequest $request)
     {
-        //
+        Sector::create($request->all());
+        return redirect()->route('sectores.index');
     }
 
     /**
@@ -56,7 +63,13 @@ class SectorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sector = Sector::findOrFail($id);
+        $almacenes = Almacen::all();
+        return view('sectores.edit',
+            [
+                'sector'=>$sector,
+                'almacenes'=>$almacenes
+            ]);
     }
 
     /**
@@ -66,9 +79,12 @@ class SectorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SectorRequest $request, $id)
     {
-        //
+        $sector = Sector::findOrFail($id);
+        $datos = $request->all();
+        $sector->update($datos);
+        return redirect()->route('sectores.index');
     }
 
     /**
@@ -79,6 +95,8 @@ class SectorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sector = Sector::findOrFail($id);
+        $sector->delete();
+        return redirect()->route('sectores.index');
     }
 }

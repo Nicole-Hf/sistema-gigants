@@ -6,15 +6,8 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            {{--<li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('home') }}">
-                    <i class="material-icons">dashboard</i>
-                    <p>{{ __('Dashboard') }}</p>
-                </a>
-            </li>--}}
-            {{--Paquete de Gestionar Productos--}}
             <li class="nav-item {{ ($activePage == 'productos' || $activePage == 'caracteristicas') ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
                     <i class="material-icons">shopping_basket</i>
                     <p>{{ __('Gestionar Producto') }}
                         <b class="caret"></b>
@@ -39,7 +32,7 @@
             </li>
             {{--Paquete de Gestionar Compras--}}
             <li class="nav-item {{ ($activePage == 'compra' || $activePage == 'proveedor') ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#compra" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#compra" aria-expanded="false">
                     <i class="material-icons">store</i>
                     <p>{{ __('Gestionar Compra') }}
                         <b class="caret"></b>
@@ -64,7 +57,7 @@
             </li>
             {{--Paquete de Gestionar Ventas--}}
             <li class="nav-item {{ ($activePage == 'venta' || $activePage == 'cliente') ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#ventas" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#ventas" aria-expanded="false">
                     <i class="material-icons">local_grocery_store</i>
                     <p>{{ __('Gestionar Venta') }}
                         <b class="caret"></b>
@@ -82,6 +75,31 @@
                             <a class="nav-link" href="#">
                                 <i class="material-icons">perm_identity</i>
                                 <span class="sidebar-normal"> {{ __('Gestionar Cliente') }} </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{--Paquete de Gestionar Almacén--}}
+            <li class="nav-item {{ ($activePage == 'almacen' || $activePage == 'sector') ? ' active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#almacen" aria-expanded="false">
+                    <i class="material-icons">corporate_fare</i>
+                    <p>{{ __('Gestionar Almacén') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse show" id="almacen">
+                    <ul class="nav">
+                        <li class="nav-item{{ $activePage == 'almacen' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('almacenes.index') }}">
+                                <i class="material-icons">add_business</i>
+                                <span class="sidebar-normal">{{ __('Gestionar Almacén') }} </span>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'sector' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('sectores.index') }}">
+                                <i class="material-icons">layers</i>
+                                <span class="sidebar-normal"> {{ __('Gestionar Sector') }} </span>
                             </a>
                         </li>
                     </ul>
