@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage'=>'users', 'titlePage'=>'Usuarios'])
+@extends('layouts.main', ['activePage'=>'proveedor', 'titlePage'=>'Proveedores'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -14,7 +14,7 @@
             {{--Botón agregar--}}
             <div class="row">
                 <div class="col-12 text-left">
-                    <a href="{{ route('users.create')  }}" class="btn btn-rose">Agregar Usuario</a>
+                    <a href="{{ route('proveedores.create')  }}" class="btn btn-rose">Registrar Proveedor</a>
                 </div>
             </div>
             {{--Empieza la tabla--}}
@@ -23,7 +23,7 @@
                     <div class="card">
                         {{--Header--}}
                         <div class="card-header card-header-rose">
-                            <h4 class="card-title">Usuarios</h4>
+                            <h4 class="card-title">Proveedores</h4>
                         </div>
                         {{--Body--}}
                         <div class="card-body">
@@ -39,10 +39,9 @@
                                     <th>Teléfono</th>
                                     <th>Dirección</th>
                                     <th>Correo electrónico</th>
-                                    {{--<th>Username</th>--}}
                                     <th class="text-right">Acciones</th>
                                     </thead>
-                                    {{--Llamar a los usuarios--}}
+                                    {{--Llamar a los proveedores--}}
                                     <tbody>
                                     @foreach($personas as $persona)
                                         <tr>
@@ -53,18 +52,17 @@
                                             <td>{{ $persona->telefono }}</td>
                                             <td>{{ $persona->direccion }}</td>
                                             <td>{{ $persona->email }}</td>
-                                            {{--<td>{{ $persona->user }}</td>--}}
                                             <td class="td-actions text-right">
-                                                {{--Ver Usuario--}}
-                                                <a href="{{ route('users.show', $persona->id) }}" class="btn btn-info">
+                                                {{--Ver--}}
+                                                <a href="{{ route('proveedores.show', $persona->id) }}" class="btn btn-info">
                                                     <i class="material-icons">person</i>
                                                 </a>
                                                 {{--Editar Usuario--}}
-                                                <a href="{{ route('users.edit', $persona->id) }}" class="btn btn-warning">
+                                                <a href="{{ route('proveedores.edit', $persona->id) }}" class="btn btn-warning">
                                                     <i class="material-icons">edit</i>
                                                 </a>
                                                 {{--Eliminar Usuario--}}
-                                                <form action="{{ route('users.delete',$persona->id) }}" method="post"
+                                                <form action="{{ route('proveedores.delete',$persona->id) }}" method="post"
                                                       style="display: inline-block;"
                                                       onsubmit="return confirm('¿Está seguro?')">
                                                     @csrf

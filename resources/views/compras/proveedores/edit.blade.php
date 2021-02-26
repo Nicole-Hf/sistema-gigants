@@ -1,10 +1,10 @@
-@extends('layouts.main',['activePage'=>'users','titlePage'=>'Editar Usuario'])
+@extends('layouts.main',['activePage'=>'proveedor','titlePage'=>'Editar Proveedor'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('users.update', [$persona->id]) }}" method="post" class="form-horizontal">
+                    <form action="{{ route('proveedores.update',[$persona->id]) }}" method="post" class="form-horizontal">
                         @csrf
                         @method('PUT')
                         <div class="card">
@@ -14,7 +14,7 @@
                             </div>
                             {{--Body--}}
                             <div class="card-body">
-                                {{--Carnet Identidad--}}
+                                {{--Carnet de Identidad--}}
                                 <div class="row">
                                     <label for="carnet_identidad" class="col-sm-2 col-form-label">Carnet de Identidad</label>
                                     <div class="col-sm-7">
@@ -29,7 +29,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--Nombre --}}
+                                {{--Nombre de Persona--}}
                                 <div class="row">
                                     <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
                                     <div class="col-sm-7">
@@ -44,7 +44,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{-- Apellidos --}}
+                                {{--Apellidos--}}
                                 <div class="row">
                                     <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
                                     <div class="col-sm-7">
@@ -59,7 +59,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{-- Telefono --}}
+                                {{--Telefono--}}
                                 <div class="row">
                                     <label for="telefono" class="col-sm-2 col-form-label">Teléfono/Celular</label>
                                     <div class="col-sm-7">
@@ -74,7 +74,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{-- Dirección --}}
+                                {{--Direccion--}}
                                 <div class="row">
                                     <label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
                                     <div class="col-sm-7">
@@ -89,7 +89,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--Correo de Usuario--}}
+                                {{--Correo de Persona--}}
                                 <div class="row">
                                     <label for="email" class="col-sm-2 col-form-label">Correo electrónico</label>
                                     <div class="col-sm-7">
@@ -104,26 +104,11 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--Contraseña de Usuario--}}
-                                <div class="row">
-                                    <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
-                                    <div class="col-sm-7">
-                                        <input  type="password"
-                                                class="form-control"
-                                                name="password"
-                                                placeholder="Ingrese la contraseña solo si quiere cambiarla">
-                                        @if ($errors->has('password'))
-                                            <span class="error text-danger" for="input-name">
-                                                {{ $errors->first('password') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
                             </div>
                             {{--Botones/Footer--}}
                             <div class="card-footer ml-auto mr-auto">
                                 <button type="submit" class="btn btn-rose">Actualizar Datos</button>
-                                <a class="btn btn-rose" href="{{ route('users.index') }}">Cancelar</a>
+                                <a class="btn btn-rose" href="{{ route('proveedores.index') }}">Cancelar</a>
                             </div>
                         </div>
                     </form>

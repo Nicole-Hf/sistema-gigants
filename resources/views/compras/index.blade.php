@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage'=>'productos','titlePage'=>'Producto'])
+@extends('layouts.main',['activePage'=>'compra','titlePage'=>'Compras'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -8,7 +8,7 @@
                     {{--boton agregar--}}
                     <div class="row">
                         <div class="col-12 text-left">
-                            <a href="{{ route('productos.create') }}" class="btn btn-rose"> Registrar Producto </a>
+                            <a href="{{ route('compras.create') }}" class="btn btn-rose"> Agregar Compra </a>
                         </div>
                     </div>
                     <div class="row">
@@ -16,7 +16,7 @@
                             <div class="card">
                                 {{--Header--}}
                                 <div class="card-header card-header-rose">
-                                    <h4 class="card-title">Productos</h4>
+                                    <h4 class="card-title">Compras</h4>
                                 </div>
                                 {{--Body--}}
                                 <div class="card-body">
@@ -24,31 +24,33 @@
                                         <table class="table">
                                             <thead class="text-primary text-rose">
                                             <th> # </th>
-                                            <th> Descripción </th>
-                                            <th> Código de Barras </th>
-                                            <th> Precio </th>
-                                            <th> Existencia </th>
+                                            <th> Fecha de Compra </th>
+                                            <th> Total (Bs.-) </th>
+                                            <th> Estado de la compra </th>
+                                            <th> Saldo (Bs.-) </th>
+                                            <th> Proveedor </th>
                                             <th class="text-right"> Acciones </th>
                                             </thead>
                                             <tbody>
-                                            @foreach($productos as $producto)
+                                            @foreach($compras as $compra)
                                                 <tr>
-                                                    <td>{{ $producto->id }}</td>
-                                                    <td>{{ $producto->descripcion }}</td>
-                                                    <td>{{ $producto->codigo_barra }}</td>
-                                                    <td>{{ $producto->precio }}</td>
-                                                    <td> 0 </td>
+                                                    <td>{{ $compra->id }}</td>
+                                                    <td>{{ $compra->fecha }}</td>
+                                                    <td>{{ $compra->total }}</td>
+                                                    <td>{{ $compra->estado }}</td>
+                                                    <td>{{ $compra->saldo }}</td>
+                                                    <td>{{ $compra->proveedor->nombre }}</td>
                                                     <td class="td-actions text-right">
                                                         {{--Ver--}}
-                                                        <a href="{{ route('productos.show',$producto->id) }}" class="btn btn-info">
+                                                        <a href="{{ route('compras.show',$compra->id) }}" class="btn btn-info">
                                                             <i class="material-icons">search</i>
                                                         </a>
                                                         {{--Editar--}}
-                                                        <a href="{{ route('productos.edit',$producto->id) }}" class="btn btn-warning">
+                                                        <a href="{{ route('compras.edit',$compra->id) }}" class="btn btn-warning">
                                                             <i class="material-icons">edit</i>
                                                         </a>
                                                         {{--Eliminar--}}
-                                                        <form action="{{ route('productos.delete',$producto->id) }}"
+                                                        <form action="{{ route('compras.delete',$compra->id) }}"
                                                               method="POST" style="display: inline-block;"
                                                               onsubmit="return confirm('¿Está seguro?')">
                                                             @csrf

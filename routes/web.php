@@ -193,3 +193,42 @@ Route::put
 ('/almacen/sectores/{sector}',[App\Http\Controllers\SectorController::class,'update'])->name('sectores.update');
 Route::delete
 ('/almacen/sectores/{sector}',[App\Http\Controllers\SectorController::class,'destroy'])->name('sectores.delete');
+
+//RUTAS TIPO DE COMPRA
+Route::get
+('/compra/tipo_compra/create',[App\Http\Controllers\TipoCompraController::class,'create'])->name('tipo_compra.create');
+Route::post
+('/compra/tipo_compra',[App\Http\Controllers\TipoCompraController::class,'store'])->name('tipo_compra.store');
+
+//RUTAS PROVEEDOR
+Route::get
+('/proveedores/create',[App\Http\Controllers\ProveedorController::class,'create'])->name('proveedores.create');
+Route::post
+('/proveedores',[App\Http\Controllers\ProveedorController::class,'store'])->name('proveedores.store');
+Route::get
+('/proveedores',[App\Http\Controllers\ProveedorController::class,'index'])->name('proveedores.index');
+Route::get
+('/proveedores/{proveedor}/edit',[App\Http\Controllers\ProveedorController::class,'edit'])->name('proveedores.edit');
+Route::put
+('/proveedores/{proveedor}',[App\Http\Controllers\ProveedorController::class,'update'])->name('proveedores.update');
+Route::get
+('/proveedores/{proveedor}',[App\Http\Controllers\ProveedorController::class,'show'])->name('proveedores.show');
+Route::delete
+('/proveedores/{proveedor}',[App\Http\Controllers\ProveedorController::class,'destroy'])->name('proveedores.delete');
+
+//RUTAS DE COMPRA
+Route::get
+('/compras/create',[App\Http\Controllers\CompraController::class,'create'])->name('compras.create');
+Route::post
+('/compras',[App\Http\Controllers\CompraController::class,'store'])->name('compras.store');
+Route::get
+('/compras',[App\Http\Controllers\CompraController::class,'index'])->name('compras.index');
+Route::get
+('/compras/{compra}/edit',[App\Http\Controllers\CompraController::class,'edit'])->name('compras.edit');
+Route::put
+('/compras/{compra}',[App\Http\Controllers\CompraController::class,'update'])->name('compras.update');
+Route::get
+('/compras/{compra}',[App\Http\Controllers\CompraController::class,'show'])->name('compras.show');
+Route::delete
+('/compras/{compra}',[App\Http\Controllers\CompraController::class,'destroy'])->name('compras.delete');
+

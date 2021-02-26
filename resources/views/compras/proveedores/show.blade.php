@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage'=>'users', 'titlePage'=>'Usuario'])
+@extends('layouts.main',['activePage'=>'proveedor', 'titlePage'=>'Proveedor'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -9,8 +9,8 @@
                     <div class="card-header card-header-text card-header-rose">  {{--card-header card-header-rose--}}
                         <div class="card-text">
                             <a href="#" class="d-flex">
-                                <img src="{{ asset('/img/faces/avatar.jpg') }}" class="card-img-top" style="width:60px">
-                                <h2 class="card-title mx-3">{{ $persona->nombre }}</h2>
+                                {{--<img src="{{ asset('/img/faces/avatar.jpg') }}" class="card-img-top" style="width:60px">--}}
+                                <h2 class="card-title mx-3">Datos del Proveedor</h2>
                                 {{--<p class="card-category">{{ $user->name }}</p>--}}
                             </a>
                         </div>
@@ -32,14 +32,14 @@
                                 <label for="email" class="col-form-label">Correo Electrónico: </label>
                                 {{ $persona->email }} <br>
                                 <label for="tipo" class="col-form-label">Tipo de Persona: </label>
-                                {{ $persona->tipo }} -VENDEDOR <br>
+                                {{ $persona->tipo }} -PROVEEDOR <br>
                                 <label for="created_at" class="col-form-label">Fecha de Creación: </label>
                                 {{ $persona->created_at }} <br>
                             </p>
                         </div>
                         </p>
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <a href="{{ route('users.index')}}" class="btn btn-rose">Volver</a>
+                            <a href="{{ route('proveedores.index')}}" class="btn btn-rose">Volver</a>
                         </div>
                     </div>
                 </div>

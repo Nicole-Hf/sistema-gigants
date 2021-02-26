@@ -17,7 +17,8 @@
                                 <div class="row">
                                     <label for="linea_id" class="col-sm-2 col-form-label">Línea</label>
                                     <div class="col-sm-3">
-                                        <select  name="linea_id" id="inputLinea_id" class="form-control">
+                                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select">
+                                            {{--<select name="linea_id" id="inputLinea_id" class="form-control">--}}
                                             <option value="">-- Seleccione la línea --</option>
                                             @foreach($lineas as $linea)
                                                 <option value="{{ $linea->id }}">

@@ -13,7 +13,7 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        //
+        return view('productos.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class InventarioController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

@@ -1,27 +1,26 @@
-@extends('layouts.main',['activePage'=>'users','titlePage'=>'Editar Usuario'])
+@extends('layouts.main',['activePage'=>'proveedor','titlePage'=>'Agregar Proveedor'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('users.update', [$persona->id]) }}" method="post" class="form-horizontal">
+                    <form action="{{ route('proveedores.store') }}" method="post" class="form-horizontal">
                         @csrf
-                        @method('PUT')
                         <div class="card">
                             {{--Header--}}
                             <div class="card-header card-header-rose">
-                                <h4 class="card-title">Formulario de Edición</h4>
+                                <h4 class="card-title">Formulario de Registro</h4>
                             </div>
                             {{--Body--}}
                             <div class="card-body">
-                                {{--Carnet Identidad--}}
+                                {{--Carnet de Identidad--}}
                                 <div class="row">
                                     <label for="carnet_identidad" class="col-sm-2 col-form-label">Carnet de Identidad</label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
                                                 name="carnet_identidad"
-                                                value="{{ old('carnet_identidad',$persona->carnet_identidad) }}" autofocus>
+                                                value="{{ old('carnet_identidad') }}" autofocus>
                                         @if ($errors->has('carnet_identidad'))
                                             <span class="error text-danger" for="input-name">
                                                 {{ $errors->first('carnet_identidad') }}
@@ -29,14 +28,14 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--Nombre --}}
+                                {{--Nombre de Persona--}}
                                 <div class="row">
                                     <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
                                                 name="nombre"
-                                                value="{{ old('nombre',$persona->nombre) }}" autofocus>
+                                                value="{{ old('nombre') }}" autofocus>
                                         @if ($errors->has('nombre'))
                                             <span class="error text-danger" for="input-name">
                                                 {{ $errors->first('nombre') }}
@@ -44,14 +43,14 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{-- Apellidos --}}
+                                {{--Apellidos--}}
                                 <div class="row">
                                     <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
                                                 name="apellidos"
-                                                value="{{ old('apellidos',$persona->apellidos) }}" autofocus>
+                                                value="{{ old('apellidos') }}" autofocus>
                                         @if ($errors->has('apellidos'))
                                             <span class="error text-danger" for="input-name">
                                                 {{ $errors->first('apellidos') }}
@@ -59,14 +58,14 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{-- Telefono --}}
+                                {{--Telefono--}}
                                 <div class="row">
                                     <label for="telefono" class="col-sm-2 col-form-label">Teléfono/Celular</label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
                                                 name="telefono"
-                                                value="{{ old('telefono',$persona->telefono) }}" autofocus>
+                                                value="{{ old('telefono') }}" autofocus>
                                         @if ($errors->has('telefono'))
                                             <span class="error text-danger" for="input-name">
                                                 {{ $errors->first('telefono') }}
@@ -74,14 +73,14 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{-- Dirección --}}
+                                {{--Direccion--}}
                                 <div class="row">
                                     <label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
                                     <div class="col-sm-7">
                                         <input  type="text"
                                                 class="form-control"
                                                 name="direccion"
-                                                value="{{ old('direccion',$persona->direccion) }}" autofocus>
+                                                value="{{ old('direccion') }}" autofocus>
                                         @if ($errors->has('direccion'))
                                             <span class="error text-danger" for="input-name">
                                                 {{ $errors->first('direccion') }}
@@ -89,14 +88,14 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--Correo de Usuario--}}
+                                {{--Correo de Persona--}}
                                 <div class="row">
                                     <label for="email" class="col-sm-2 col-form-label">Correo electrónico</label>
                                     <div class="col-sm-7">
                                         <input  type="email"
                                                 class="form-control"
                                                 name="email"
-                                                value="{{ old('email',$persona->email) }}">
+                                                value="{{ old('email') }}">
                                         @if ($errors->has('email'))
                                             <span class="error text-danger" for="input-name">
                                                 {{ $errors->first('email') }}
@@ -104,26 +103,11 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--Contraseña de Usuario--}}
-                                <div class="row">
-                                    <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
-                                    <div class="col-sm-7">
-                                        <input  type="password"
-                                                class="form-control"
-                                                name="password"
-                                                placeholder="Ingrese la contraseña solo si quiere cambiarla">
-                                        @if ($errors->has('password'))
-                                            <span class="error text-danger" for="input-name">
-                                                {{ $errors->first('password') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
                             </div>
                             {{--Botones/Footer--}}
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-rose">Actualizar Datos</button>
-                                <a class="btn btn-rose" href="{{ route('users.index') }}">Cancelar</a>
+                                <button type="submit" class="btn btn-rose">Guardar Datos</button>
+                                <a class="btn btn-rose" href="{{ route('proveedores.index') }}">Cancelar</a>
                             </div>
                         </div>
                     </form>

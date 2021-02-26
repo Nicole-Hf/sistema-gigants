@@ -16,12 +16,12 @@
           <a href="{{ route('home') }}" class="nav-link">
             <i class="material-icons">dashboard</i> {{ __('Dashboard') }}
           </a>
-        </li> --}}
+        </li>
         <li class="nav-item{{ $activePage == 'register' ? ' active' : '' }}">
           <a href="{{ route('register') }}" class="nav-link">
             <i class="material-icons">person_add</i> {{ __('Registrarse') }}
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item{{ $activePage == 'login' ? ' active' : '' }}">
           <a href="{{ route('login') }}" class="nav-link">
             <i class="material-icons">fingerprint</i> {{ __('Iniciar Sesión') }}

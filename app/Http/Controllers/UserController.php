@@ -18,7 +18,7 @@ class UserController extends Controller
         /*$users = User::paginate(5);
         return view('users.index', compact('users'));*/
 
-        $personas = Persona::all();
+        $personas = Persona::where('tipo',self::$TIPO_USUARIO)->get();
         return view('users.index',['personas'=>$personas]);
     }
 

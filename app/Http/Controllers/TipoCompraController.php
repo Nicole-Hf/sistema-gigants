@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TipoCompra;
 use Illuminate\Http\Request;
 
 class TipoCompraController extends Controller
@@ -23,7 +24,7 @@ class TipoCompraController extends Controller
      */
     public function create()
     {
-        //
+        return view('compras.tipo_compra.create');
     }
 
     /**
@@ -34,7 +35,8 @@ class TipoCompraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TipoCompra::create($request->all());
+        return back();
     }
 
     /**

@@ -41,13 +41,13 @@
                 <div class="collapse show" id="compra">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'compra' ? ' active' : '' }}">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('compras.index') }}">
                                 <i class="material-icons">local_mall</i>
                                 <span class="sidebar-normal">{{ __('Gestionar Compra') }} </span>
                             </a>
                         </li>
                         <li class="nav-item{{ $activePage == 'proveedor' ? ' active' : '' }}">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('proveedores.index') }}">
                                 <i class="material-icons">local_shipping</i>
                                 <span class="sidebar-normal"> {{ __('Gestionar Proveedor') }} </span>
                             </a>

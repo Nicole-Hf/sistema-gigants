@@ -8,7 +8,7 @@
                     <div class="card-header card-header-text card-header-rose">
                         <div class="card-text">
                             <a href="#" class="d-flex">
-                                <h4 class="card-title mx-3">{{ $producto->descripcion }}</h4>
+                                <h4 class="card-title mx-3">Datos del producto</h4>
                             </a>
                         </div>
                     </div>
