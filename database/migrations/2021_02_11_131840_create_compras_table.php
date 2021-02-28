@@ -17,8 +17,8 @@ class CreateComprasTable extends Migration
             $table->id();
             $table->char('estado');
             $table->date('fecha');
-            $table->float('total');
-            $table->float('saldo');
+            $table->float('total')->default(0);
+            $table->float('saldo')->default(0);
             $table->unsignedBigInteger('tipo_compra_id');
             $table->unsignedBigInteger('administrador_id');
             $table->unsignedBigInteger('proveedor_id');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Compra;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class DetalleCompraController extends Controller
@@ -21,9 +23,15 @@ class DetalleCompraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($compra_id)
     {
-        //
+        $compras = Compra::findOrFail($compra_id);
+        $productos = Producto::all();
+        return view('compras.detalle.create',
+            [
+                'compras'=>$compras,
+                'productos'=>$productos
+            ]);
     }
 
     /**

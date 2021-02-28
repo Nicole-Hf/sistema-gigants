@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('compras.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('compras.detalles.store') }}" method="post" class="form-horizontal">
                         @csrf
                         <div class="card">
                             {{--Header--}}
                             <div class="card-header card-header-rose">
-                                <h4 class="card-title">Formulario de Registro</h4>
+                                <h4 class="card-title">Adiccionar Producto</h4>
                             </div>
                             {{--Body--}}
                             <div class="card-body">
@@ -29,22 +29,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    {{--Fecha--}}
-                                    <label for="fecha" class="col-sm-2 col-form-label">Fecha de Compra</label>
-                                    <div class="col-sm-3">
-                                        <input type="text"
-                                               class="form-control"
-                                               name="fecha"
-                                               placeholder="AAAA/MM/DD" value="{{ old('fecha') }}">
-                                        @if ($errors->has('fecha'))
-                                            <span class="error text-danger" for="input-fecha">
-                                                {{ $errors->first('fecha') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    {{--tipo_compra_id--}}
+                                    {{--Producto--}}
                                     <label for="tipo_compra_id" class="col-sm-2 col-form-label">Tipo de Compra</label>
                                     <div class="col-sm-3">
                                         <select name="tipo_compra_id" id="inputTipo_compra_id" class="form-control">

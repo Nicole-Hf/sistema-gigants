@@ -20,7 +20,7 @@ class CreateFacturasTable extends Migration
             $table->unsignedBigInteger('nro_autorizacion');
             $table->date('fecha_emision');
             $table->string('descripcion',100);
-            $table->float('total');
+            $table->float('total')->default(0);
             $table->string('codigo_control',20);
             $table->date('fecha_limite');
             $table->unsignedBigInteger('cliente_id');

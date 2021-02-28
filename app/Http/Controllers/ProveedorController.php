@@ -35,7 +35,7 @@ class ProveedorController extends Controller
         $persona->tipo = self::$TIPO_PROVEEDOR;
         $persona->save();
 
-        return redirect()->route('compras.proveedores.index');
+        return redirect()->route('proveedores.index');
     }
 
     public function show($id)

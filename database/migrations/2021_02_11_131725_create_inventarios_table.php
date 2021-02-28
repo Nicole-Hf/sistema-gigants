@@ -15,7 +15,7 @@ class CreateInventariosTable extends Migration
     {
         Schema::create('inventarios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('existencia');
+            $table->unsignedBigInteger('existencia')->default(0);
             $table->unsignedBigInteger('minimo_stock')->nullable();
             $table->unsignedBigInteger('maximo_stock')->nullable();
             $table->unsignedBigInteger('almacen_id');

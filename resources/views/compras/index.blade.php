@@ -9,6 +9,7 @@
                     <div class="row">
                         <div class="col-12 text-left">
                             <a href="{{ route('compras.create') }}" class="btn btn-rose"> Agregar Compra </a>
+                            <a href="{{ route('tipo_compra.create') }}" class="btn btn-rose"> Tipo de Compra </a>
                         </div>
                     </div>
                     <div class="row">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductoRequest;
+use App\Models\Inventario;
 use App\Models\Linea;
 use App\Models\Marca;
 use App\Models\Familia;

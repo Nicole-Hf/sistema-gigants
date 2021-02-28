@@ -36,7 +36,7 @@ class TipoCompraController extends Controller
     public function store(Request $request)
     {
         TipoCompra::create($request->all());
-        return back();
+        return redirect()->route('compras.index');
     }
 
     /**

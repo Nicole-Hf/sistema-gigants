@@ -28,12 +28,11 @@ class CompraController extends Controller
     public function create()
     {
         $proveedores = Persona::where('tipo',ProveedorController::$TIPO_PROVEEDOR)->get();
-        $administradores = Persona::where('tipo',UserController::$TIPO_USUARIO)->get();
-        $tipo_compra = TipoCompra::all();
+        $tipos_compras = TipoCompra::all();
         return view('compras.create',
             [
-                'tipo_compra'=>$tipo_compra,
-                'proveedores'=>$proveedores
+                'proveedores'=>$proveedores,
+                'tipos_compras'=>$tipos_compras
             ]);
     }
 
@@ -50,7 +49,7 @@ class CompraController extends Controller
         $compra->fecha = $request->input('fecha');
         $compra->saldo = $request->input('saldo');
         $compra->tipo_compra_id = $request->input('tipo_compra_id');
-        $compra->administrador_id = $request->input('administrador_id');
+        $compra->administrador_id = auth()->user()->id;
         $compra->proveedor_id = $request->input('proveedor_id');
         $compra->save();
 
@@ -67,7 +66,7 @@ class CompraController extends Controller
     {
         $compra = Compra::findOrFail($id);
         $compra->load('proveedor');
-        $compra->load('administrador');
+        $compra->load('tipo_compra');
         return view('compras.show',['compra'=>$compra]);
     }
 
@@ -97,7 +96,7 @@ class CompraController extends Controller
         $compra->fecha = $request->input('fecha');
         $compra->saldo = $request->input('saldo');
         $compra->tipo_compra_id = $request->input('tipo_compra_id');
-        $compra->administrador_id = $request->input('administrador_id');
+        $compra->administrador_id = auth()->user()->id; //->user()->persona->id;
         $compra->proveedor_id = $request->input('proveedor_id');
         $compra->save();
 

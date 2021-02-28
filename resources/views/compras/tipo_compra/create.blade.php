@@ -32,7 +32,7 @@
                             {{--Botones/Footer--}}
                             <div class="card-footer ml-auto mr-auto">
                                 <button type="submit" class="btn btn-rose"> Guardar Datos </button>
-                                <a class="btn btn-rose" href="#"> Cancelar </a>
+                                <a class="btn btn-rose" href="{{ route('compras.index') }}"> Cancelar </a>
                             </div>
                         </div>
                     </form>

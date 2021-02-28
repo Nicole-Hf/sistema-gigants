@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Almacen;
+use App\Models\Producto;
+use App\Models\Sector;
 use Illuminate\Http\Request;
 
 class InventarioController extends Controller
@@ -13,7 +16,7 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        return view('productos.index');
+        //
     }
 
     /**
@@ -21,9 +24,17 @@ class InventarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($producto_id)
     {
-
+        $producto = Producto::findOrFail($producto_id);
+        $almacenes = Almacen::all();
+        $sectores = Sector::all();
+        return view('productos.inventarios.create',
+            [
+                'producto'=>$producto,
+                'almacenes'=>$almacenes,
+                'sectores'=>$sectores
+            ]);
     }
 
     /**
