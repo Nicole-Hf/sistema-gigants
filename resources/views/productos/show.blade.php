@@ -40,7 +40,7 @@
                                 <label for="temporada_id" class="col-form-label">Temporada: </label>
                                 {{ $producto->temporada->descripcion }} <br>
                                 <label for="sector_id" class="col-form-label">Sector: </label>
-                                {{ $producto->sector_id }} <br>
+                                {{ $producto->sector->nombre }} <br>
                                 <label for="created_at" class="col-form-label">Fecha de Creación: </label>
                                 {{ $producto->created_at }} <br>
                             </p>

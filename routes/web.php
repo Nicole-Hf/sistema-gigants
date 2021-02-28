@@ -197,6 +197,8 @@ Route::group(['prefix'=>'productos'], function () {
        ('/create/{producto_id}',[App\Http\Controllers\InventarioController::class,'create'])->name('productos.inventarios.create');
        Route::post
        ('/{producto_id}',[App\Http\Controllers\InventarioController::class,'store'])->name('productos.inventarios.store');
+       /*Route::get
+       ('/sectores',[App\Http\Controllers\InventarioController::class,'getSectores']);*/
     });
 });
 

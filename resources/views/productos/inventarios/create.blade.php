@@ -48,7 +48,7 @@
                                     <label for="almacen_id" class="col-sm-2 col-form-label">Almacén</label>
                                     <div class="col-sm-3">
                                         <select name="almacen_id" id="inputAlmacen_id" class="form-control">
-                                            <option value="">-- Seleccione el tipo --</option>
+                                            <option value="">-- Seleccione el almacén --</option>
                                             @foreach($almacenes as $almacen)
                                                 <option value="{{ $almacen->id }}">
                                                     {{ $almacen->nombre }}
@@ -58,6 +58,23 @@
                                         @if ($errors->has('almacen_id'))
                                             <span class="error text-danger" for="input-almacen_id">
                                                 {{ $errors->first('almacen_id') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                    {{--sectores--}}
+                                    <label for="sector_id" class="col-sm-1 col-form-label">Sector</label>
+                                    <div class="col-sm-4">
+                                        <select name="sector_id" id="inputSector_id" class="form-control">
+                                            <option value="">-- Seleccione el sector --</option>
+                                            @foreach($sectores as $sector)
+                                                <option value="{{ $sector->id }}">
+                                                    {{ $sector->almacen->nombre }} - {{ $sector->nombre}}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('sector_id'))
+                                            <span class="error text-danger" for="input-sector_id">
+                                                {{ $errors->first('sector_id') }}
                                             </span>
                                         @endif
                                     </div>
@@ -74,3 +91,22 @@
         </div>
     </div>
 @endsection
+
+{{--@section('script')
+    <script>
+        $(document).ready(function () {
+           $('#inputAlmacen_id').on('change', function () {
+              var almacen_id = $(this).val();
+              if ($.trim(almacen_id) != '') {
+                  $.get('sectores',{almacen_id: almacen_id}, function (sectores) {
+                      $('#inputSector_id').empty();
+                      $('#inputSector_id').append("<option value=''>-- Seleccione el sector --</option>");
+                      $.each(sectores, function (id, nombre) {
+                          $('#inputSector_id').append("<option value='"+ id +"'>"+ nombre +"</option>");
+                      });
+                  });
+              }
+           });
+        });
+    </script>
+@endsection--}}
