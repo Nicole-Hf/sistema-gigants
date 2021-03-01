@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Compra;
 use App\Models\Persona;
+use App\Models\Producto;
 use App\Models\TipoCompra;
 use Illuminate\Http\Request;
 
@@ -67,7 +68,10 @@ class CompraController extends Controller
         $compra = Compra::findOrFail($id);
         $compra->load('proveedor');
         $compra->load('tipo_compra');
-        return view('compras.show',['compra'=>$compra]);
+        $compra->load('compra_detalles');
+        $compra->compra_detalles->load('inventario');
+
+        return view('compras.show', ['compra'=>$compra]);
     }
 
     /**

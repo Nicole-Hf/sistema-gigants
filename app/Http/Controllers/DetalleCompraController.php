@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compra;
+use App\Models\DetalleCompra;
+use App\Models\Inventario;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -25,12 +27,12 @@ class DetalleCompraController extends Controller
      */
     public function create($compra_id)
     {
-        $compras = Compra::findOrFail($compra_id);
-        $productos = Producto::all();
-        return view('compras.detalle.create',
+        $compra = Compra::findOrFail($compra_id);
+        $inventarios = Inventario::all();
+        return view('compras.detalles.create',
             [
-                'compras'=>$compras,
-                'productos'=>$productos
+                'compra'=>$compra,
+                'inventarios'=>$inventarios
             ]);
     }
 
@@ -40,9 +42,25 @@ class DetalleCompraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $compra_id)
     {
+        $detalle = new DetalleCompra();
+        $detalle->inventario_id = $request->input('inventario_id');
+        $detalle->cantidad = $request->input('cantidad');
+        $detalle->costo_compra = $request->input('costo_compra');
+        $detalle->importe = $request->input('cantidad') * $request->input('costo_compra');
+        $detalle->compra_id = $compra_id;
+        $detalle->save();
 
+        $compra = Compra::findOrFail($compra_id);
+        $compra->total = $compra->total + $detalle->importe;
+        $compra->save();
+
+        $inventario = Inventario::findOrFail($detalle->inventario_id);
+        $inventario->existencia = $inventario->existencia + $detalle->cantidad;
+        $inventario->save();
+
+        return redirect()->route('compras.show',[$compra_id]);
     }
 
     /**

@@ -39,60 +39,53 @@
                     </div>
                 </div>
             </div>
+
             {{--Detalle --}}
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         {{--Body--}}
                         <div class="card-body">
-                            <a href="#" class="btn btn-sm btn-rose"> Adiccionar Producto </a>
+                            <a href="{{ route('compras.detalles.create',[$compra->id]) }}" class="btn btn-sm btn-rose"> Adiccionar Producto </a>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class="text-primary text-rose">
                                     <th> # </th>
+                                    <th> Descripción </th>
                                     <th> Cantidad </th>
                                     <th> Precio Unitario (Bs.-) </th>
                                     <th> SubTotal (Bs.-) </th>
                                     <th class="text-right"> Acciones </th>
                                     </thead>
                                     <tbody>
-                                    {{--@foreach($compras as $compra)
+                                    @foreach($compra->compra_detalles as $compra_detalle)
                                         <tr>
-                                            <td>{{ $compra->id }}</td>
-                                            <td>{{ $compra->fecha }}</td>
-                                            <td>{{ $compra->total }}</td>
-                                            <td>{{ $compra->estado }}</td>
-                                            <td>{{ $compra->saldo }}</td>
-                                            <td>{{ $compra->proveedor->nombre }}</td>
+                                            <td>{{ $compra_detalle->id }}</td>
+                                            <td>{{ $compra_detalle->inventario->id }}</td>
+                                            <td>{{ $compra_detalle->cantidad }}</td>
+                                            <td>{{ $compra_detalle->costo_compra }}</td>
+                                            <td>{{ $compra_detalle->importe }}</td>
                                             <td class="td-actions text-right">
-                                                {{--Ver--}}
-                                                {{--<a href="{{ route('compras.show',$compra->id) }}" class="btn btn-info">
-                                                    <i class="material-icons">search</i>
-                                                </a>
-                                                {{--Editar--}}
-                                    {{--<a href="{{ route('compras.edit',$compra->id) }}" class="btn btn-warning">
-                                        <i class="material-icons">edit</i>
-                                    </a>
-                                    {{--Eliminar--}}
-    {{--<form action="{{ route('compras.delete',$compra->id) }}"
-          method="POST" style="display: inline-block;"
-          onsubmit="return confirm('¿Está seguro?')">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-danger" type="submit">
-            <i class="material-icons">close</i>
-        </button>
-    </form>
-</td>
-</tr>
-@endforeach--}}
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                                                {{--Eliminar--}}
+                                                <form action="#"
+                                                      method="POST" style="display: inline-block;"
+                                                      onsubmit="return confirm('¿Está seguro?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" type="submit">
+                                                        <i class="material-icons">close</i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

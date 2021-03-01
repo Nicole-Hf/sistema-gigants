@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('compras.detalles.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('compras.detalles.store',[$compra->id]) }}" method="post" class="form-horizontal">
                         @csrf
                         <div class="card">
                             {{--Header--}}
@@ -14,74 +14,69 @@
                             {{--Body--}}
                             <div class="card-body">
                                 <div class="row">
-                                    {{--Estado--}}
-                                    <label for="estado" class="col-sm-2 col-form-label">Estado de Compra</label>
+                                    {{--Cantidad--}}
+                                    <label for="cantidad" class="col-sm-2 col-form-label">Cantidad</label>
                                     <div class="col-sm-3">
                                         <input type="text"
                                                class="form-control"
-                                               name="estado"
-                                               value="{{ old('estado') }}">
-                                        @if ($errors->has('estado'))
-                                            <span class="error text-danger" for="input-estado">
-                                                {{ $errors->first('estado') }}
+                                               name="cantidad"
+                                               value="{{ old('cantidad') }}">
+                                        @if ($errors->has('cantidad'))
+                                            <span class="error text-danger" for="input-cantidad">
+                                                {{ $errors->first('cantidad') }}
                                             </span>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="row">
-                                    {{--Producto--}}
-                                    <label for="tipo_compra_id" class="col-sm-2 col-form-label">Tipo de Compra</label>
-                                    <div class="col-sm-3">
-                                        <select name="tipo_compra_id" id="inputTipo_compra_id" class="form-control">
+                                    {{--inventario_id--}}
+                                    <label for="inventario_id" class="col-sm-2 col-form-label">Producto</label>
+                                    <div class="col-sm-5">
+                                        <select name="inventario_id" id="inputInventario_id" class="form-control">
                                             <option value="">-- Seleccione el tipo --</option>
-                                            @foreach($tipos_compras as $tipo_compra)
-                                                <option value="{{ $tipo_compra->id }}">
-                                                    {{ $tipo_compra->tipo }}
+                                            @foreach($inventarios as $inventario)
+                                                <option value="{{ $inventario->id }}">
+                                                    {{ $inventario->producto->descripcion }}
                                                 </option>
                                             @endforeach
                                         </select>
-                                        @if ($errors->has('tipo_compra_id'))
-                                            <span class="error text-danger" for="input-tipo_compra_id">
-                                                {{ $errors->first('tipo_compra_id') }}
+                                        @if ($errors->has('inventario_id'))
+                                            <span class="error text-danger" for="input-inventario_id">
+                                                {{ $errors->first('inventario_id') }}
                                             </span>
                                         @endif
                                     </div>
                                 </div>
-                                {{--Saldo--}}
+                                {{--costo_compra--}}
                                 <div class="row">
-                                    <label for="saldo" class="col-sm-2 col-form-label">Saldo a pagar</label>
+                                    <label for="costo_compra" class="col-sm-2 col-form-label">Costo Unitario</label>
                                     <div class="col-sm-3">
                                         <input type="text"
                                                class="form-control"
-                                               name="saldo"
-                                               value="{{ old('saldo') }}">
-                                        @if ($errors->has('saldo'))
-                                            <span class="error text-danger" for="input-saldo">
-                                                {{ $errors->first('saldo') }}
+                                               name="costo_compra"
+                                               value="{{ old('costo_compra') }}">
+                                        @if ($errors->has('costo_compra'))
+                                            <span class="error text-danger" for="input-costo_compra">
+                                                {{ $errors->first('costo_compra') }}
                                             </span>
                                         @endif
                                     </div>
                                 </div>
-                                {{--Proveedor--}}
+                                {{--importe
                                 <div class="row">
-                                    <label for="proveedor_id" class="col-sm-2 col-form-label">Proveedor</label>
+                                    <label for="importe" class="col-sm-2 col-form-label">SubTotal</label>
                                     <div class="col-sm-3">
-                                        <select name="proveedor_id" id="inputProveedor_id" class="form-control">
-                                            <option value="">-- Seleccione el proveedor --</option>
-                                            @foreach($proveedores as $proveedor)
-                                                <option value="{{ $proveedor->id }}">
-                                                    {{ $proveedor->nombre }}
-                                                    {{ $proveedor->apellidos }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('proveedor_id'))
-                                            <span class="error text-danger" for="input-proveedor_id">
-                                                {{ $errors->first('proveedor_id') }}
+                                        <input type="text"
+                                               class="form-control"
+                                               name="importe"
+                                               value="{{ old('importe') }}">
+                                        @if ($errors->has('importe'))
+                                            <span class="error text-danger" for="input-importe">
+                                                {{ $errors->first('importe') }}
                                             </span>
                                         @endif
                                     </div>
-                                </div>
+                                </div>--}}
                             </div>
                             {{--Botones--}}
                             <div class="card-footer ml-auto mr-auto">

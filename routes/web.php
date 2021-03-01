@@ -268,7 +268,6 @@ Route::group(['prefix'=>'compras'], function () {
         ('/create/{compra_id}',[App\Http\Controllers\DetalleCompraController::class,'create'])->name('compras.detalles.create');
         Route::post
         ('/{compra_id}',[App\Http\Controllers\DetalleCompraController::class,'store'])->name('compras.detalles.store');
-
     });
 
     Route::group(['prefix'=>'proveedores'], function () {
