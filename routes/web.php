@@ -224,8 +224,8 @@ Route::group(['prefix'=>'almacenes'], function () {
         ('/create/{almacen_id}',[App\Http\Controllers\SectorController::class,'create'])->name('sectores.create');
         Route::post
         ('/{almacen_id}',[App\Http\Controllers\SectorController::class,'store'])->name('sectores.store');
-        Route::get
-        ('/{almacen_id}',[App\Http\Controllers\SectorController::class,'index'])->name('sectores.index');
+        //Route::get
+        //('/{almacen_id}',[App\Http\Controllers\SectorController::class,'index'])->name('sectores.index');
         Route::get
         ('/{sector}/edit',[App\Http\Controllers\SectorController::class,'edit'])->name('sectores.edit');
         Route::put

@@ -1,4 +1,4 @@
-@extends('layouts.main',['activePage'=>'sector','titlePage'=>'Editar Sector de Almacén'])
+@extends('layouts.main',['activePage'=>'almacen','titlePage'=>'Editar Sector de Almacén'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -12,7 +12,7 @@
                                 <h4 class="card-title">Formulario de Edición</h4>
                             </div>
                             <div class="card-body">
-                                {{--Almacen--}}
+                                {{--Almacen
                                 <div class="row">
                                     <label for="almacen_id" class="col-sm-2 col-form-label">Almacén</label>
                                     <div class="col-sm-3">
@@ -30,7 +30,7 @@
                                             </span>
                                         @endif
                                     </div>
-                                </div>
+                                </div>--}}
                                 {{--Nombre--}}
                                 <div class="row">
                                     <label for="nombre" class="col-md-2 col-form-label">Nombre del Sector</label>
@@ -50,7 +50,7 @@
                             {{--Botones--}}
                             <div class="card-footer ml-auto mr-auto">
                                 <button type="submit" class="btn btn-rose">Actualizar Datos</button>
-                                <a class="btn btn-rose" href="{{ route('sectores.index') }}">Cancelar</a>
+                                {{--<a class="btn btn-rose" href="{{ route('sectores.index') }}">Cancelar</a>--}}
                             </div>
                         </div>
                     </form>

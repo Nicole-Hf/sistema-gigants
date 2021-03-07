@@ -14,15 +14,15 @@ class SectorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($almacen_id)
+    public function index()
     {
-        $almacen = Almacen::findOrFail($almacen_id);
+        /*$almacen = Almacen::findOrFail($almacen_id);
         $sectores = Sector::where('almacen_id',$almacen_id)->get();
         return view('sectores.index',
             [
                 'sectores'=>$sectores,
                 'almacen'=>$almacen
-            ]);
+            ]);*/
     }
 
     /**
@@ -33,7 +33,12 @@ class SectorController extends Controller
     public function create($almacen_id)
     {
         $almacen = Almacen::findOrFail($almacen_id);
-        return view('sectores.create',compact('almacen'));
+        $sectores = Sector::where('almacen_id',$almacen_id)->get();
+        return view('sectores.create',
+            [
+                'almacen'=>$almacen,
+                'sectores'=>$sectores
+            ]);
     }
 
     /**
@@ -42,14 +47,18 @@ class SectorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SectorRequest $request, $almacen_id)
+    public function store(SectorRequest $request,$almacen_id)
     {
         $sector = new Sector();
         $sector->nombre = $request->input('nombre');
         $sector->almacen_id = $almacen_id;
         $sector->save();
 
-        return redirect()->route('sectores.index',[$almacen_id]);
+        return redirect()->route('sectores.create',[$almacen_id]);
+
+        //Sector::create($request->only('nombre')+['almacen_id'=>$almacen_id]);
+        //Sector::create($request->all());
+        //return redirect()->route('sectores.index');
     }
 
     /**
@@ -72,11 +81,11 @@ class SectorController extends Controller
     public function edit($id)
     {
         $sector = Sector::findOrFail($id);
-        $almacenes = Almacen::all();
+        //$almacenes = Almacen::all();
         return view('sectores.edit',
             [
-                'sector'=>$sector,
-                'almacenes'=>$almacenes
+                'sector'=>$sector
+                //'almacenes'=>$almacenes
             ]);
     }
 
@@ -92,7 +101,7 @@ class SectorController extends Controller
         $sector = Sector::findOrFail($id);
         $datos = $request->all();
         $sector->update($datos);
-        return redirect()->route('sectores.index');
+        return redirect()->route('sectores.create');
     }
 
     /**

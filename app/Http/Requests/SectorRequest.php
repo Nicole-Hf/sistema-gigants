@@ -24,8 +24,8 @@ class SectorRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>"required|string|max:45",
-            'almacen_id'=>"required"
+            'nombre'=>"required|string|max:45"
+            //'almacen_id'=>"required"
         ];
     }
 }

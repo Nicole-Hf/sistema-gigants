@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-9">
                             <div class="card">
                                 <div class="card-header card-header-rose">
                                     <h4 class="card-title">Sectores</h4>
