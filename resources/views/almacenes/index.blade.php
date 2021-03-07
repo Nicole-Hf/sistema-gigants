@@ -43,6 +43,10 @@
                                             <td>{{ $almacen->ubicacion }}</td>
                                             <td>{{ $almacen->created_at }}</td>
                                             <td class="td-actions">
+                                                {{--Sectores--}}
+                                                <a href="{{ route('sectores.index',$almacen->id) }}" class="btn btn-info">
+                                                    <i class="material-icons">layers</i>
+                                                </a>
                                                 {{--Editar--}}
                                                 <a href="{{ route('almacenes.edit',$almacen->id) }}" class="btn btn-warning">
                                                     <i class="material-icons">edit</i>

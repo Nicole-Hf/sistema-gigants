@@ -7,7 +7,7 @@
                     {{--agregar--}}
                     <div class="row">
                         <div class="col-12 text-left">
-                            <a href="{{ route('sectores.create') }}" class="btn btn-rose"> Agregar Sector </a>
+                            <a href="{{ route('sectores.create',[$almacen->id]) }}" class="btn btn-rose"> Agregar Sector </a>
                         </div>
                     </div>
                     <div class="row">
@@ -23,7 +23,7 @@
                                             <thead class="text-primary text-rose">
                                             <th> # </th>
                                             <th> Nombre </th>
-                                            <th> Almacén </th>
+                                            {{--<th> Almacén </th>--}}
                                             <th> Fecha de Creación </th>
                                             <th> Acciones </th>
                                             </thead>
@@ -32,7 +32,7 @@
                                                 <tr>
                                                     <td>{{ $sector->id }}</td>
                                                     <td>{{ $sector->nombre }}</td>
-                                                    <td>{{ $sector->almacen->nombre }}</td>
+                                                    {{--<td>{{ $sector->almacen->nombre }}</td>--}}
                                                     <td>{{ $sector->created_at }}</td>
                                                     <td class="td-actions">
                                                         {{--Editar--}}

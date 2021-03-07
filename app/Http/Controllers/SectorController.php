@@ -14,11 +14,15 @@ class SectorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($almacen_id)
     {
-        $sectores = Sector::all();
-        $sectores->load('almacen');
-        return view('sectores.index',compact('sectores'));
+        $almacen = Almacen::findOrFail($almacen_id);
+        $sectores = Sector::where('almacen_id',$almacen_id)->get();
+        return view('sectores.index',
+            [
+                'sectores'=>$sectores,
+                'almacen'=>$almacen
+            ]);
     }
 
     /**
@@ -26,10 +30,10 @@ class SectorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($almacen_id)
     {
-        $almacenes = Almacen::all();
-        return view('sectores.create',compact('almacenes'));
+        $almacen = Almacen::findOrFail($almacen_id);
+        return view('sectores.create',compact('almacen'));
     }
 
     /**
@@ -38,10 +42,14 @@ class SectorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SectorRequest $request)
+    public function store(SectorRequest $request, $almacen_id)
     {
-        Sector::create($request->all());
-        return redirect()->route('sectores.index');
+        $sector = new Sector();
+        $sector->nombre = $request->input('nombre');
+        $sector->almacen_id = $almacen_id;
+        $sector->save();
+
+        return redirect()->route('sectores.index',[$almacen_id]);
     }
 
     /**
