@@ -12,7 +12,7 @@ class DetalleCompra extends Model
     protected $table = 'detalles_compras';
     protected $fillable = [
         'compra_id',
-        'inventario_id',
+        'producto_id',
         'cantidad',
         'costo_compra',
         'importe'
@@ -23,8 +23,8 @@ class DetalleCompra extends Model
         return $this->belongsTo(Compra::class,'compra_id');
     }
 
-    public function inventario()
+    public function producto()
     {
-        return $this->belongsTo(Inventario::class,'inventario_id');
+        return $this->belongsTo(Producto::class,'producto_id');
     }
 }

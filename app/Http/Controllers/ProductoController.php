@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductoRequest;
+use App\Models\Almacen;
 use App\Models\Inventario;
 use App\Models\Linea;
 use App\Models\Marca;
@@ -15,6 +16,7 @@ use App\Models\Modelo;
 use App\Models\Temporada;
 use App\Models\Promocion;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\logicalAnd;
 
 class ProductoController extends Controller
 {
@@ -68,7 +70,33 @@ class ProductoController extends Controller
      */
     public function store(ProductoRequest $request)
     {
-        Producto::create($request->all());
+        /*Producto::create($request->all());
+        return redirect()->route('productos.index');*/
+
+        $producto = new Producto();
+        $producto->descripcion = $request->input('descripcion');
+        $producto->codigo_barra = $request->input('codigo_barra');
+        $producto->precio = $request->input('precio');
+        $producto->linea_id = $request->input('linea_id');
+        $producto->marca_id = $request->input('marca_id');
+        $producto->familia_id = $request->input('familia_id');
+        $producto->talla_id = $request->input('talla_id');
+        $producto->color_id = $request->input('color_id');
+        $producto->modelo_id = $request->input('modelo_id');
+        $producto->promocion_id = $request->input('promocion_id');
+        $producto->temporada_id = $request->input('temporada_id');
+        $producto->sector_id = $request->input('sector_id');
+        $producto->save();
+
+        $producto->load('sector');
+
+        $inventario = new Inventario();
+        $inventario->almacen_id = $producto->sector->almacen_id; //$request->input('almacen_id');
+        $inventario->producto_id = $producto->id;
+        $inventario->minimo_stock = $request->input('minimo_stock');
+        $inventario->maximo_stock = $request->input('maximo_stock');
+        $inventario->save();
+
         return redirect()->route('productos.index');
     }
 
@@ -129,9 +157,33 @@ class ProductoController extends Controller
      */
     public function update(ProductoRequest $request, $id)
     {
-        $producto = Producto::findOrFail($id);
+        /*$producto = Producto::findOrFail($id);
         $datos = $request->all();
         $producto->update($datos);
+        return redirect()->route('productos.index');*/
+
+        $producto = Producto::findOrFail($id);
+        $producto->descripcion = $request->input('descripcion');
+        $producto->codigo_barra = $request->input('codigo_barra');
+        $producto->precio = $request->input('precio');
+        $producto->linea_id = $request->input('linea_id');
+        $producto->marca_id = $request->input('marca_id');
+        $producto->familia_id = $request->input('familia_id');
+        $producto->talla_id = $request->input('talla_id');
+        $producto->color_id = $request->input('color_id');
+        $producto->modelo_id = $request->input('modelo_id');
+        $producto->promocion_id = $request->input('promocion_id');
+        $producto->temporada_id = $request->input('temporada_id');
+        $producto->sector_id = $request->input('sector_id');
+        $producto->save();
+
+        $inventario = $producto->inventarios;
+        $inventario->almacen_id = $producto->sector->almacen_id; //$request->input('almacen_id');
+        //$inventario->producto_id = $producto->id;
+        $inventario->minimo_stock = $request->input('minimo_stock');
+        $inventario->maximo_stock = $request->input('maximo_stock');
+        $inventario->save();
+
         return redirect()->route('productos.index');
     }
 

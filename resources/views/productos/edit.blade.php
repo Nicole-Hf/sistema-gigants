@@ -99,8 +99,6 @@
                                             </span>
                                         @endif
                                     </div>
-                                    {{--Entradas al inventario
-                                    <label class="col-sm-7 col-form-label">Entradas al Inventario</label>--}}
                                 </div>
                                 <div class="row">
                                     {{--Talla--}}
@@ -120,7 +118,8 @@
                                             </span>
                                         @endif
                                     </div>
-                                    {{--Almacén--}}
+                                    {{--Entradas al inventario--}}
+                                    <label class="col-sm-7 col-form-label">Entradas al Inventario</label>
                                 </div>
                                 {{--Color--}}
                                 <div class="row">
@@ -137,6 +136,23 @@
                                         @if ($errors->has('color_id'))
                                             <span class="error text-danger" for="input-color_id">
                                                 {{ $errors->first('color_id') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                    {{--Sectores--}}
+                                    <label for="sector_id" class="col-sm-2 col-form-label">Sector</label>
+                                    <div class="col-sm-4">
+                                        <select name="sector_id" id="inputSector_id" class="form-control">
+                                            <option value="">-- Seleccione el sector --</option>
+                                            @foreach($sectores as $sector)
+                                                <option value="{{ $sector->id }}" {{ $sector->id == $producto->sector_id ? 'selected' : '' }}>
+                                                    {{ $sector->almacen->nombre }} - {{ $sector->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('sector_id'))
+                                            <span class="error text-danger" for="input-sector_id">
+                                                {{ $errors->first('sector_id') }}
                                             </span>
                                         @endif
                                     </div>
@@ -159,6 +175,19 @@
                                             </span>
                                         @endif
                                     </div>
+                                    {{--Minimo Stock--}}
+                                    <label for="minimo_stock" class="col-sm-2 col-form-label">Stock Mínimo</label>
+                                    <div class="col-sm-3">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="minimo_stock"
+                                               value="{{ old('minimo_stock') }}">
+                                        @if ($errors->has('minimo_stock'))
+                                            <span class="error text-danger" for="input-minimo_stock">
+                                                {{ $errors->first('minimo_stock') }}
+                                            </span>
+                                        @endif
+                                    </div>
                                 </div>
                                 {{--Temporada--}}
                                 <div class="row">
@@ -175,6 +204,19 @@
                                         @if ($errors->has('temporada_id'))
                                             <span class="error text-danger" for="input-temporada_id">
                                                 {{ $errors->first('temporada_id') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                    {{--Maximo Stock--}}
+                                    <label for="maximo_stock" class="col-sm-2 col-form-label">Stock Máximo</label>
+                                    <div class="col-sm-3">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="maximo_stock"
+                                               value="{{ old('maximo_stock') }}">
+                                        @if ($errors->has('maximo_stock'))
+                                            <span class="error text-danger" for="input-maximo_stock">
+                                                {{ $errors->first('maximo_stock') }}
                                             </span>
                                         @endif
                                     </div>

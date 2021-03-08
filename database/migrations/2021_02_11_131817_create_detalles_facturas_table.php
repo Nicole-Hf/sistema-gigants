@@ -19,14 +19,14 @@ class CreateDetallesFacturasTable extends Migration
             $table->float('precio_venta');
             $table->float('importe');
             $table->unsignedBigInteger('factura_id');
-            $table->unsignedBigInteger('inventario_id');
+            $table->unsignedBigInteger('producto_id');
             $table->timestamps();
 
             $table->softDeletes();
 
             $table->foreign('factura_id')->on('facturas')->references('id')
                 ->onDelete('cascade');
-            $table->foreign('inventario_id')->on('inventarios')->references('id')
+            $table->foreign('producto_id')->on('productos')->references('id')
                 ->onDelete('cascade');
         });
     }

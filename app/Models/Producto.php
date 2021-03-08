@@ -80,4 +80,14 @@ class Producto extends Model
     {
         return $this->hasMany(Inventario::class,'producto_id');
     }
+
+    public function compra_detalles()
+    {
+        return $this->hasMany(DetalleCompra::class,'producto_id');
+    }
+
+    public function factura_detalles()
+    {
+        return $this->hasMany(DetalleFactura::class,'producto_id');
+    }
 }

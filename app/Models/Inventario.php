@@ -28,13 +28,13 @@ class Inventario extends Model
         return $this->belongsTo(Almacen::class,'almacen_id');
     }
 
-    public function factura_detalles()
+    /*public function factura_detalles()
     {
         return $this->hasMany(DetalleFactura::class,'inventario_id');
-    }
+    }*/
 
-    public function compra_detalles()
+    /*public function compra_detalles()
     {
         return $this->hasMany(DetalleCompra::class,'inventario_id');
-    }
+    }*/
 }

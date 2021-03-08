@@ -19,14 +19,14 @@ class CreateDetallesComprasTable extends Migration
             $table->float('costo_compra');
             $table->float('importe');
             $table->unsignedBigInteger('compra_id');
-            $table->unsignedBigInteger('inventario_id');
+            $table->unsignedBigInteger('producto_id');
             $table->timestamps();
 
             $table->softDeletes();
 
             $table->foreign('compra_id')->on('compras')->references('id')
                 ->onDelete('cascade');
-            $table->foreign('inventario_id')->on('inventarios')->references('id')
+            $table->foreign('producto_id')->on('productos')->references('id')
                 ->onDelete('cascade');
         });
     }
