@@ -28,11 +28,11 @@ class DetalleCompraController extends Controller
     public function create($compra_id)
     {
         $compra = Compra::findOrFail($compra_id);
-        $inventarios = Inventario::all();
+        $productos = Producto::all();
         return view('compras.detalles.create',
             [
                 'compra'=>$compra,
-                'inventarios'=>$inventarios
+                'productos'=>$productos
             ]);
     }
 
@@ -45,7 +45,7 @@ class DetalleCompraController extends Controller
     public function store(Request $request, $compra_id)
     {
         $detalle = new DetalleCompra();
-        $detalle->inventario_id = $request->input('inventario_id');
+        $detalle->producto_id = $request->input('producto_id');
         $detalle->cantidad = $request->input('cantidad');
         $detalle->costo_compra = $request->input('costo_compra');
         $detalle->importe = $request->input('cantidad') * $request->input('costo_compra');
@@ -56,7 +56,7 @@ class DetalleCompraController extends Controller
         $compra->total = $compra->total + $detalle->importe;
         $compra->save();
 
-        $inventario = Inventario::findOrFail($detalle->inventario_id);
+        $inventario = Inventario::where('producto_id',$detalle->producto_id && 'almacen_id',1)->get();
         $inventario->existencia = $inventario->existencia + $detalle->cantidad;
         $inventario->save();
 

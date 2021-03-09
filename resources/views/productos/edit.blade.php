@@ -32,20 +32,6 @@
                                             </span>
                                         @endif
                                     </div>
-                                    {{--Precio--}}
-                                    <label for="precio" class="col-sm-2 col-form-label">Precio</label>
-                                    <div class="col-sm-3">
-                                        <input type="text"
-                                               class="form-control"
-                                               name="precio" value="{{ old('precio',$producto->precio) }}">
-                                        @if ($errors->has('precio'))
-                                            <span class="error text-danger" for="input-precio">
-                                                {{ $errors->first('precio') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="row">
                                     {{--Marca--}}
                                     <label for="marca_id" class="col-sm-2 col-form-label">Marca</label>
                                     <div class="col-sm-3">
@@ -60,6 +46,115 @@
                                         @if ($errors->has('marca_id'))
                                             <span class="error text-danger" for="input-marca_id">
                                                 {{ $errors->first('marca_id') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    {{--Familia--}}
+                                    <label for="familia_id" class="col-sm-2 col-form-label">Familia</label>
+                                    <div class="col-sm-3">
+                                        <select name="familia_id" id="inputFamilia_id" class="form-control">
+                                            <option value="">-- Seleccione la familia --</option>
+                                            @foreach($familias as $familia)
+                                                <option value="{{ $familia->id }}" {{ $familia->id == $producto->familia_id ? 'selected' : '' }}>
+                                                    {{ $familia->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('familia_id'))
+                                            <span class="error text-danger" for="input-familia_id">
+                                                {{ $errors->first('familia_id') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                    {{--Talla--}}
+                                    <label for="talla_id" class="col-sm-2 col-form-label">Talla</label>
+                                    <div class="col-sm-3">
+                                        <select name="talla_id" id="inputTalla_id" class="form-control">
+                                            <option value="">-- Seleccione la talla --</option>
+                                            @foreach($tallas as $talla)
+                                                <option value="{{ $talla->id }}" {{ $talla->id == $producto->talla_id ? 'selected' : '' }}>
+                                                    {{ $talla->talla }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('talla_id'))
+                                            <span class="error text-danger" for="input-talla_id">
+                                                {{ $errors->first('talla_id') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    {{--Color--}}
+                                    <label for="color_id" class="col-sm-2 col-form-label">Color</label>
+                                    <div class="col-sm-3">
+                                        <select name="color_id" id="inputColor_id" class="form-control">
+                                            <option value="">-- Seleccione el color --</option>
+                                            @foreach($colores as $color)
+                                                <option value="{{ $color->id }}" {{ $color->id == $producto->color_id ? 'selected' : '' }}>
+                                                    {{ $color->color }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('color_id'))
+                                            <span class="error text-danger" for="input-color_id">
+                                                {{ $errors->first('color_id') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    {{--Modelo--}}
+                                    <label for="modelo_id" class="col-sm-2 col-form-label">Modelo</label>
+                                    <div class="col-sm-3">
+                                        <select name="modelo_id" id="inputModelo_id" class="form-control">
+                                            <option value="">-- Seleccione el modelo --</option>
+                                            @foreach($modelos as $modelo)
+                                                <option value="{{ $modelo->id }}" {{ $modelo->id == $producto->modelo_id ? 'selected' : '' }}>
+                                                    {{ $modelo->descripcion }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('modelo_id'))
+                                            <span class="error text-danger" for="input-modelo_id">
+                                                {{ $errors->first('modelo_id') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                    {{--Precio--}}
+                                    <label for="precio" class="col-sm-2 col-form-label">Precio</label>
+                                    <div class="col-sm-3">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="precio" value="{{ old('precio',$producto->precio) }}">
+                                        @if ($errors->has('precio'))
+                                            <span class="error text-danger" for="input-precio">
+                                                {{ $errors->first('precio') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    {{--Temporada--}}
+                                    <label for="temporada_id" class="col-sm-2 col-form-label">Temporada</label>
+                                    <div class="col-sm-3">
+                                        <select name="temporada_id" id="inputTemporada_id" class="form-control">
+                                            <option value="">-- Seleccione la temporada --</option>
+                                            @foreach($temporadas as $temporada)
+                                                <option value="{{ $temporada->id }}" {{ $temporada->id == $producto->temporada_id ? 'selected' : '' }}>
+                                                    {{ $temporada->descripcion }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('temporada_id'))
+                                            <span class="error text-danger" for="input-temporada_id">
+                                                {{ $errors->first('temporada_id') }}
                                             </span>
                                         @endif
                                     </div>
@@ -81,148 +176,9 @@
                                         @endif
                                     </div>
                                 </div>
+
                                 <div class="row">
-                                    {{--Familia--}}
-                                    <label for="familia_id" class="col-sm-2 col-form-label">Familia</label>
-                                    <div class="col-sm-3">
-                                        <select name="familia_id" id="inputFamilia_id" class="form-control">
-                                            <option value="">-- Seleccione la familia --</option>
-                                            @foreach($familias as $familia)
-                                                <option value="{{ $familia->id }}" {{ $familia->id == $producto->familia_id ? 'selected' : '' }}>
-                                                    {{ $familia->nombre }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('familia_id'))
-                                            <span class="error text-danger" for="input-familia_id">
-                                                {{ $errors->first('familia_id') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    {{--Talla--}}
-                                    <label for="talla_id" class="col-sm-2 col-form-label">Talla</label>
-                                    <div class="col-sm-3">
-                                        <select name="talla_id" id="inputTalla_id" class="form-control">
-                                            <option value="">-- Seleccione la talla --</option>
-                                            @foreach($tallas as $talla)
-                                                <option value="{{ $talla->id }}" {{ $talla->id == $producto->talla_id ? 'selected' : '' }}>
-                                                    {{ $talla->talla }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('talla_id'))
-                                            <span class="error text-danger" for="input-talla_id">
-                                                {{ $errors->first('talla_id') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                    {{--Entradas al inventario--}}
-                                    <label class="col-sm-7 col-form-label">Entradas al Inventario</label>
-                                </div>
-                                {{--Color--}}
-                                <div class="row">
-                                    <label for="color_id" class="col-sm-2 col-form-label">Color</label>
-                                    <div class="col-sm-3">
-                                        <select name="color_id" id="inputColor_id" class="form-control">
-                                            <option value="">-- Seleccione el color --</option>
-                                            @foreach($colores as $color)
-                                                <option value="{{ $color->id }}" {{ $color->id == $producto->color_id ? 'selected' : '' }}>
-                                                    {{ $color->color }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('color_id'))
-                                            <span class="error text-danger" for="input-color_id">
-                                                {{ $errors->first('color_id') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                    {{--Sectores--}}
-                                    <label for="sector_id" class="col-sm-2 col-form-label">Sector</label>
-                                    <div class="col-sm-4">
-                                        <select name="sector_id" id="inputSector_id" class="form-control">
-                                            <option value="">-- Seleccione el sector --</option>
-                                            @foreach($sectores as $sector)
-                                                <option value="{{ $sector->id }}" {{ $sector->id == $producto->sector_id ? 'selected' : '' }}>
-                                                    {{ $sector->almacen->nombre }} - {{ $sector->nombre }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('sector_id'))
-                                            <span class="error text-danger" for="input-sector_id">
-                                                {{ $errors->first('sector_id') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                {{--Modelo--}}
-                                <div class="row">
-                                    <label for="modelo_id" class="col-sm-2 col-form-label">Modelo</label>
-                                    <div class="col-sm-3">
-                                        <select name="modelo_id" id="inputModelo_id" class="form-control">
-                                            <option value="">-- Seleccione el modelo --</option>
-                                            @foreach($modelos as $modelo)
-                                                <option value="{{ $modelo->id }}" {{ $modelo->id == $producto->modelo_id ? 'selected' : '' }}>
-                                                    {{ $modelo->descripcion }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('modelo_id'))
-                                            <span class="error text-danger" for="input-modelo_id">
-                                                {{ $errors->first('modelo_id') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                    {{--Minimo Stock--}}
-                                    <label for="minimo_stock" class="col-sm-2 col-form-label">Stock Mínimo</label>
-                                    <div class="col-sm-3">
-                                        <input type="text"
-                                               class="form-control"
-                                               name="minimo_stock"
-                                               value="{{ old('minimo_stock') }}">
-                                        @if ($errors->has('minimo_stock'))
-                                            <span class="error text-danger" for="input-minimo_stock">
-                                                {{ $errors->first('minimo_stock') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                {{--Temporada--}}
-                                <div class="row">
-                                    <label for="temporada_id" class="col-sm-2 col-form-label">Temporada</label>
-                                    <div class="col-sm-3">
-                                        <select name="temporada_id" id="inputTemporada_id" class="form-control">
-                                            <option value="">-- Seleccione la temporada --</option>
-                                            @foreach($temporadas as $temporada)
-                                                <option value="{{ $temporada->id }}" {{ $temporada->id == $producto->temporada_id ? 'selected' : '' }}>
-                                                    {{ $temporada->descripcion }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('temporada_id'))
-                                            <span class="error text-danger" for="input-temporada_id">
-                                                {{ $errors->first('temporada_id') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                    {{--Maximo Stock--}}
-                                    <label for="maximo_stock" class="col-sm-2 col-form-label">Stock Máximo</label>
-                                    <div class="col-sm-3">
-                                        <input type="text"
-                                               class="form-control"
-                                               name="maximo_stock"
-                                               value="{{ old('maximo_stock') }}">
-                                        @if ($errors->has('maximo_stock'))
-                                            <span class="error text-danger" for="input-maximo_stock">
-                                                {{ $errors->first('maximo_stock') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                {{--Codigo de Barra--}}
-                                <div class="row">
+                                    {{--Codigo de Barra--}}
                                     <label for="codigo_barra" class="col-sm-2 col-form-label">Código de Barra</label>
                                     <div class="col-sm-3">
                                         <input type="text"
@@ -236,6 +192,7 @@
                                         @endif
                                     </div>
                                 </div>
+
                                 {{--Descripcion--}}
                                 <div class="row">
                                     <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>

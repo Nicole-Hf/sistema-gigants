@@ -114,6 +114,6 @@ class SectorController extends Controller
     {
         $sector = Sector::findOrFail($id);
         $sector->delete();
-        return redirect()->route('sectores.index');
+        return redirect()->route('almacenes.index');
     }
 }

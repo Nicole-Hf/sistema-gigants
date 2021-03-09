@@ -69,7 +69,7 @@ class CompraController extends Controller
         $compra->load('proveedor');
         $compra->load('tipo_compra');
         $compra->load('compra_detalles');
-        $compra->compra_detalles->load('inventario');
+        $compra->compra_detalles->load('producto');
 
         return view('compras.show', ['compra'=>$compra]);
     }

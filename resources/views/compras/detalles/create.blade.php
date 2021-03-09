@@ -29,20 +29,20 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    {{--inventario_id--}}
-                                    <label for="inventario_id" class="col-sm-2 col-form-label">Producto</label>
+                                    {{--producto_id--}}
+                                    <label for="producto_id" class="col-sm-2 col-form-label">Producto</label>
                                     <div class="col-sm-5">
-                                        <select name="inventario_id" id="inputInventario_id" class="form-control">
-                                            <option value="">-- Seleccione el tipo --</option>
-                                            @foreach($inventarios as $inventario)
-                                                <option value="{{ $inventario->id }}">
-                                                    {{ $inventario->producto->descripcion }}
+                                        <select name="producto_id" id="inputProducto_id" class="form-control">
+                                            <option value="">-- Seleccione producto --</option>
+                                            @foreach($productos as $producto)
+                                                <option value="{{ $producto->id }}">
+                                                    {{ $producto->descripcion }}
                                                 </option>
                                             @endforeach
                                         </select>
-                                        @if ($errors->has('inventario_id'))
-                                            <span class="error text-danger" for="input-inventario_id">
-                                                {{ $errors->first('inventario_id') }}
+                                        @if ($errors->has('producto_id'))
+                                            <span class="error text-danger" for="input-producto_id">
+                                                {{ $errors->first('producto_id') }}
                                             </span>
                                         @endif
                                     </div>

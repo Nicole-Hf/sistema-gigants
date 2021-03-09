@@ -259,7 +259,8 @@ Route::group(['prefix'=>'compras'], function () {
         ('/create',[App\Http\Controllers\TipoCompraController::class,'create'])->name('tipo_compra.create');
         Route::post
         ('/',[App\Http\Controllers\TipoCompraController::class,'store'])->name('tipo_compra.store');
-
+        Route::delete
+        ('/{tipo}',[App\Http\Controllers\TipoCompraController::class,'destroy'])->name('tipo_compra.delete');
     });
 
     Route::group(['prefix'=>'detalles'], function () {

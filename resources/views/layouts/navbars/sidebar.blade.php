@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="orange" data-background-color="white" data-image="{{ asset('/img/sidebar-1.jpg') }}">
+<div class="sidebar" data-color="rose" data-background-color="black" data-image="{{ asset('/img/sidebar-1.jpg') }}">
     <div class="logo">
         <a href="https://creative-tim.com/" class="simple-text logo-normal">
             {{ __('Tienda Gigants') }}

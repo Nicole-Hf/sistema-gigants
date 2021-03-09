@@ -47,7 +47,6 @@
                         </div>
                         </p>
                         <div class="d-grid gap-2 col-12">
-                            <a href="{{ route('productos.inventarios.create',[$producto->id]) }}" class="btn btn-rose">Agregar Stock</a>
                             <a href="{{ route('productos.index') }}" class="btn btn-rose">Volver</a>
                         </div>
                     </div>

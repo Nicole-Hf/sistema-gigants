@@ -24,7 +24,8 @@ class TipoCompraController extends Controller
      */
     public function create()
     {
-        return view('compras.tipo_compra.create');
+        $tipos_compras = TipoCompra::all();
+        return view('compras.tipo_compra.create',compact('tipos_compras'));
     }
 
     /**
@@ -36,7 +37,8 @@ class TipoCompraController extends Controller
     public function store(Request $request)
     {
         TipoCompra::create($request->all());
-        return redirect()->route('compras.index');
+        //return redirect()->route('compras.index');
+        return back();
     }
 
     /**
@@ -81,6 +83,8 @@ class TipoCompraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tipo_compra = TipoCompra::findOrFail($id);
+        $tipo_compra->delete();
+        return back();
     }
 }

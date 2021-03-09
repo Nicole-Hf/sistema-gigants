@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            {{--Detalle --}}
+            {{--Detalle--}}
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -61,7 +61,7 @@
                                     @foreach($compra->compra_detalles as $compra_detalle)
                                         <tr>
                                             <td>{{ $compra_detalle->id }}</td>
-                                            <td>{{ $compra_detalle->inventario->id }}</td>
+                                            <td>{{ $compra_detalle->producto->descripcion }}</td>
                                             <td>{{ $compra_detalle->cantidad }}</td>
                                             <td>{{ $compra_detalle->costo_compra }}</td>
                                             <td>{{ $compra_detalle->importe }}</td>
