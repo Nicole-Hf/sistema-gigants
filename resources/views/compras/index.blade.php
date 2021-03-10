@@ -26,10 +26,10 @@
                                             <thead class="text-primary text-rose">
                                             <th> # </th>
                                             <th> Fecha de Compra </th>
-                                            <th> Total (Bs.-) </th>
-                                            <th> Estado de la compra </th>
-                                            <th> Saldo (Bs.-) </th>
                                             <th> Proveedor </th>
+                                            <th> Total (Bs.-) </th>
+                                            <th> Saldo (Bs.-) </th>
+                                            <th> Estado </th>
                                             <th class="text-right"> Acciones </th>
                                             </thead>
                                             <tbody>
@@ -37,19 +37,19 @@
                                                 <tr>
                                                     <td>{{ $compra->id }}</td>
                                                     <td>{{ $compra->fecha }}</td>
-                                                    <td>{{ $compra->total }}</td>
-                                                    <td>{{ $compra->estado }}</td>
-                                                    <td>{{ $compra->saldo }}</td>
                                                     <td>{{ $compra->proveedor->nombre }}</td>
+                                                    <td>{{ $compra->total }}</td>
+                                                    <td>{{ $compra->saldo }}</td>
+                                                    <td>{{ $compra->estado }}</td>
                                                     <td class="td-actions text-right">
                                                         {{--Ver--}}
                                                         <a href="{{ route('compras.show',$compra->id) }}" class="btn btn-info">
                                                             <i class="material-icons">search</i>
                                                         </a>
-                                                        {{--Editar--}}
+                                                        {{--Editar
                                                         <a href="{{ route('compras.edit',$compra->id) }}" class="btn btn-warning">
                                                             <i class="material-icons">edit</i>
-                                                        </a>
+                                                        </a>--}}
                                                         {{--Eliminar--}}
                                                         <form action="{{ route('compras.delete',$compra->id) }}"
                                                               method="POST" style="display: inline-block;"

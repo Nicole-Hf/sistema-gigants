@@ -14,6 +14,7 @@ class Producto extends Model
         'descripcion',
         'codigo_barra',
         'precio',
+        'existencia',
         'fecha_creacion',
         'linea_id',
         'marca_id',

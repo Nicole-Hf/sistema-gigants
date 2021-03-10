@@ -18,6 +18,7 @@ class CreateProductosTable extends Migration
             $table->string('descripcion',200);
             $table->string('codigo_barra');
             $table->float('precio');
+            $table->unsignedBigInteger('existencia')->default(0);
             $table->unsignedBigInteger('linea_id');
             $table->unsignedBigInteger('marca_id');
             $table->unsignedBigInteger('familia_id');

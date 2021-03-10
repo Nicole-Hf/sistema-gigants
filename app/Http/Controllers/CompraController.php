@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompraRequest;
 use App\Models\Compra;
 use App\Models\Persona;
 use App\Models\Producto;
@@ -43,12 +44,12 @@ class CompraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompraRequest $request)
     {
         $compra = new Compra();
         $compra->estado = $request->input('estado');
         $compra->fecha = $request->input('fecha');
-        $compra->saldo = $request->input('saldo');
+        //$compra->saldo = $request->input('saldo');
         $compra->tipo_compra_id = $request->input('tipo_compra_id');
         $compra->administrador_id = auth()->user()->id;
         $compra->proveedor_id = $request->input('proveedor_id');
@@ -93,12 +94,12 @@ class CompraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompraRequest $request, $id)
     {
         $compra = Compra::findOrFail($id);
         $compra->estado = $request->input('estado');
         $compra->fecha = $request->input('fecha');
-        $compra->saldo = $request->input('saldo');
+        //$compra->saldo = $request->input('saldo');
         $compra->tipo_compra_id = $request->input('tipo_compra_id');
         $compra->administrador_id = auth()->user()->id; //->user()->persona->id;
         $compra->proveedor_id = $request->input('proveedor_id');
@@ -116,7 +117,16 @@ class CompraController extends Controller
     public function destroy($id)
     {
         $compra = Compra::findOrFail($id);
+        $compra->load('compra_detalles');
         $compra->delete();
+
+        foreach ($compra->compra_detalles as $compra_detalle)
+        {
+            $producto = $compra_detalle->producto;
+            $producto->existencia = $producto->existencia - $compra_detalle->cantidad;
+            $producto->save();
+        }
+
         return redirect()->route('compras.index');
     }
 }

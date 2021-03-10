@@ -17,7 +17,7 @@
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'productos' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('productos.index') }}">
-                                <i class="material-icons">local_mall</i>
+                                <i class="material-icons">inventory</i>
                                 <span class="sidebar-normal">{{ __('Producto') }} </span>
                             </a>
                         </li>
@@ -33,12 +33,6 @@
                                 <span class="sidebar-normal">{{ __('Gestionar Almacén') }} </span>
                             </a>
                         </li>
-                        {{--<li class="nav-item{{ $activePage == 'sector' ? ' active' : '' }}">
-                            <a class="nav-link" href="{{ route('sectores.index') }}">
-                                <i class="material-icons">layers</i>
-                                <span class="sidebar-normal"> {{ __('Gestionar Sector') }} </span>
-                            </a>
-                        </li>--}}
                     </ul>
                 </div>
             </li>
@@ -62,6 +56,12 @@
                             <a class="nav-link" href="{{ route('proveedores.index') }}">
                                 <i class="material-icons">local_shipping</i>
                                 <span class="sidebar-normal"> {{ __('Gestionar Proveedor') }} </span>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'cuotas' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('compras.cuotas.index') }}">
+                                <i class="material-icons">euro_symbol</i>
+                                <span class="sidebar-normal"> {{ __('Gestionar Cuotas') }} </span>
                             </a>
                         </li>
                     </ul>

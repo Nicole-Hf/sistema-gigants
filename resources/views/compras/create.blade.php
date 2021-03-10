@@ -17,15 +17,24 @@
                                     {{--Estado--}}
                                     <label for="estado" class="col-sm-2 col-form-label">Estado de Compra</label>
                                     <div class="col-sm-3">
-                                        <input type="text"
-                                               class="form-control"
-                                               name="estado"
-                                               value="{{ old('estado') }}">
-                                        @if ($errors->has('estado'))
-                                            <span class="error text-danger" for="input-estado">
-                                                {{ $errors->first('estado') }}
-                                            </span>
-                                        @endif
+                                        <div class="form-check form-check-radio form-check-inline">
+                                            <div class="col">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="radio" name="estado" id="inlineRadio1" value="Pendiente"> Pendiente
+                                                    <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="radio" name="estado" id="inlineRadio2" value="Completado"> Completado
+                                                    <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -46,33 +55,24 @@
                                 <div class="row">
                                     {{--tipo_compra_id--}}
                                     <label for="tipo_compra_id" class="col-sm-2 col-form-label">Tipo de Compra</label>
-                                    <div class="col-sm-3">
-                                        <select name="tipo_compra_id" id="inputTipo_compra_id" class="form-control">
-                                            <option value="">-- Seleccione el tipo --</option>
+                                    <div class="col-sm-6">
+                                        <div class="form-check form-check-radio form-check-inline">
                                             @foreach($tipos_compras as $tipo_compra)
-                                                <option value="{{ $tipo_compra->id }}">
-                                                    {{ $tipo_compra->tipo }}
-                                                </option>
+                                                <div class="col">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="radio"
+                                                               name="tipo_compra_id" id="inlineRadio3"
+                                                               value="{{ $tipo_compra->id }}"> {{ $tipo_compra->tipo }}
+                                                        <span class="circle">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
                                             @endforeach
-                                        </select>
+                                        </div>
                                         @if ($errors->has('tipo_compra_id'))
                                             <span class="error text-danger" for="input-tipo_compra_id">
                                                 {{ $errors->first('tipo_compra_id') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                {{--Saldo--}}
-                                <div class="row">
-                                    <label for="saldo" class="col-sm-2 col-form-label">Saldo a pagar</label>
-                                    <div class="col-sm-3">
-                                        <input type="text"
-                                               class="form-control"
-                                               name="saldo"
-                                               value="{{ old('saldo') }}">
-                                        @if ($errors->has('saldo'))
-                                            <span class="error text-danger" for="input-saldo">
-                                                {{ $errors->first('saldo') }}
                                             </span>
                                         @endif
                                     </div>

@@ -37,7 +37,7 @@
                                                     <td>{{ $producto->descripcion }}</td>
                                                     <td>{{ $producto->codigo_barra }}</td>
                                                     <td>{{ $producto->precio }}</td>
-                                                    <td> 0 </td>
+                                                    <td>{{ $producto->existencia }}</td>
                                                     <td class="td-actions text-right">
                                                         {{--Ver--}}
                                                         <a href="{{ route('productos.show',$producto->id) }}" class="btn btn-info">

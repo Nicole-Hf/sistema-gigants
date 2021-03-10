@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TipoCompraRequest;
 use App\Models\TipoCompra;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,7 @@ class TipoCompraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoCompraRequest $request)
     {
         TipoCompra::create($request->all());
         //return redirect()->route('compras.index');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DetalleCompraRequest;
 use App\Models\Compra;
 use App\Models\DetalleCompra;
 use App\Models\Inventario;
@@ -10,16 +11,6 @@ use Illuminate\Http\Request;
 
 class DetalleCompraController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +33,7 @@ class DetalleCompraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $compra_id)
+    public function store(DetalleCompraRequest $request, $compra_id)
     {
         $detalle = new DetalleCompra();
         $detalle->producto_id = $request->input('producto_id');
@@ -54,47 +45,17 @@ class DetalleCompraController extends Controller
 
         $compra = Compra::findOrFail($compra_id);
         $compra->total = $compra->total + $detalle->importe;
+        if (trim($compra->estado != 'Completado'))
+        {
+            $compra->saldo = $compra->total;
+        }
         $compra->save();
 
-        $inventario = Inventario::where('producto_id',$detalle->producto_id && 'almacen_id',1)->get();
-        $inventario->existencia = $inventario->existencia + $detalle->cantidad;
-        $inventario->save();
+        $producto = Producto::findOrFail($detalle->producto_id);
+        $producto->existencia = $producto->existencia + $detalle->cantidad;
+        $producto->save();
 
         return redirect()->route('compras.show',[$compra_id]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
@@ -103,8 +64,20 @@ class DetalleCompraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $compra_id)
     {
-        //
+        $detalle = DetalleCompra::findOrFail($id);
+
+        $producto = $detalle->producto;
+        $producto->existencia = $producto->existencia - $detalle->cantidad;
+        $producto->save();
+
+        $compra = $detalle->compra;
+        $compra->total = $compra->total - $detalle->importe;
+        $compra->save();
+
+        $detalle->delete();
+
+        return redirect()->route('compras.show',[$compra_id]);
     }
 }

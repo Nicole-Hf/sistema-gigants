@@ -66,16 +66,10 @@
                                             <td>{{ $compra_detalle->costo_compra }}</td>
                                             <td>{{ $compra_detalle->importe }}</td>
                                             <td class="td-actions text-right">
-                                                {{--Eliminar--}}
-                                                <form action="#"
-                                                      method="POST" style="display: inline-block;"
-                                                      onsubmit="return confirm('¿Está seguro?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger" type="submit">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </form>
+                                                <a href="{{ route('compras.detalles.delete',[$compra_detalle->id,$compra->id]) }}"
+                                                   class="btn btn-danger">
+                                                    <i class="material-icons">close</i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

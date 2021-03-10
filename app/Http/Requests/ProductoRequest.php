@@ -26,7 +26,6 @@ class ProductoRequest extends FormRequest
         $producto = $this->route('producto');
         return [
             'descripcion'=>"required|string|max:200",
-            //'codigo_barra'=>"required|unique:productos,codigo_barra,".$this->route('id'),
             'codigo_barra'=>'unique:productos,codigo_barra,'.$this->producto.'|required',
             'precio'=>"required|numeric",
             'linea_id'=>"required",
@@ -37,7 +36,10 @@ class ProductoRequest extends FormRequest
             'modelo_id'=>"required",
             'promocion_id'=>"nullable",
             'temporada_id'=>"required",
-            'sector_id'=>"nullable"
+            'sector_id'=>"nullable",
+            'minimo_stock'=>"required|numeric",
+            'maximo_stock'=>"required|numeric",
+            'existencia'=>"required|numeric"
         ];
     }
 }

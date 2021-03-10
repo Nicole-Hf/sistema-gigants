@@ -62,21 +62,6 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--importe
-                                <div class="row">
-                                    <label for="importe" class="col-sm-2 col-form-label">SubTotal</label>
-                                    <div class="col-sm-3">
-                                        <input type="text"
-                                               class="form-control"
-                                               name="importe"
-                                               value="{{ old('importe') }}">
-                                        @if ($errors->has('importe'))
-                                            <span class="error text-danger" for="input-importe">
-                                                {{ $errors->first('importe') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>--}}
                             </div>
                             {{--Botones--}}
                             <div class="card-footer ml-auto mr-auto">

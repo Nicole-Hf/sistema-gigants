@@ -269,6 +269,22 @@ Route::group(['prefix'=>'compras'], function () {
         ('/create/{compra_id}',[App\Http\Controllers\DetalleCompraController::class,'create'])->name('compras.detalles.create');
         Route::post
         ('/{compra_id}',[App\Http\Controllers\DetalleCompraController::class,'store'])->name('compras.detalles.store');
+        Route::get
+        ('/{id}/destroy/{compra_id}',[App\Http\Controllers\DetalleCompraController::class,'destroy'])->name('compras.detalles.delete');
+    });
+
+    Route::group(['prefix'=>'cuotas'], function () {
+        //RUTAS DE CUOTAS
+        Route::get
+        ('/create/{compra_id}',[App\Http\Controllers\CuotaController::class,'create'])->name('compras.cuotas.create');
+        Route::post
+        ('/{compra_id}',[App\Http\Controllers\CuotaController::class,'store'])->name('compras.cuotas.store');
+        Route::get
+        ('/index',[App\Http\Controllers\CuotaController::class,'index'])->name('compras.cuotas.index');
+        Route::get
+        ('/index2',[App\Http\Controllers\CuotaController::class,'index2'])->name('compras.cuotas.index2');
+        Route::get
+        ('/{compra_id}',[App\Http\Controllers\CuotaController::class,'show'])->name('compras.cuotas.show');
     });
 
     Route::group(['prefix'=>'proveedores'], function () {
