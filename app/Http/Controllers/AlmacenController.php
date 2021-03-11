@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AlmacenRequest;
 use App\Models\Almacen;
+use App\Models\Inventario;
 use App\Models\Talla;
 use http\Exception\BadConversionException;
 use Illuminate\Http\Request;
@@ -51,7 +52,8 @@ class AlmacenController extends Controller
      */
     public function show($id)
     {
-        //
+        $inventarios = Inventario::where('almacen_id',$id)->get();
+        return view('almacenes.show',['inventarios'=>$inventarios]);
     }
 
     /**

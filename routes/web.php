@@ -217,6 +217,8 @@ Route::group(['prefix'=>'almacenes'], function () {
     ('/{almacen}',[App\Http\Controllers\AlmacenController::class,'update'])->name('almacenes.update');
     Route::delete
     ('/{almacen}',[App\Http\Controllers\AlmacenController::class,'destroy'])->name('almacenes.delete');
+    Route::get
+    ('/{almacen}',[App\Http\Controllers\AlmacenController::class,'show'])->name('almacenes.show');
 
     Route::group(['prefix'=>'sectores'], function () {
         //RUTAS DE SECTOR
@@ -252,6 +254,8 @@ Route::group(['prefix'=>'compras'], function () {
     ('/{compra}',[App\Http\Controllers\CompraController::class,'show'])->name('compras.show');
     Route::delete
     ('/{compra}',[App\Http\Controllers\CompraController::class,'destroy'])->name('compras.delete');
+    Route::get
+    ('/pdf/{compra}',[App\Http\Controllers\CompraController::class,'pdf'])->name('compras.pdf');
 
     Route::group(['prefix'=>'tipos_compras'], function() {
         //RUTAS TIPO DE COMPRA
@@ -303,6 +307,55 @@ Route::group(['prefix'=>'compras'], function () {
         ('/{proveedor}',[App\Http\Controllers\ProveedorController::class,'show'])->name('proveedores.show');
         Route::delete
         ('/{proveedor}',[App\Http\Controllers\ProveedorController::class,'destroy'])->name('proveedores.delete');
+    });
+});
+
+//PAQUETE VENTAS
+Route::group(['prefix'=>'ventas'], function () {
+    //RUTAS DE VENTAS
+    Route::get
+    ('/create',[App\Http\Controllers\FacturaController::class,'create'])->name('ventas.create');
+    Route::post
+    ('/',[App\Http\Controllers\FacturaController::class,'store'])->name('ventas.store');
+    Route::get
+    ('/',[App\Http\Controllers\FacturaController::class,'index'])->name('ventas.index');
+    Route::get
+    ('/{venta}/edit',[App\Http\Controllers\FacturaController::class,'edit'])->name('ventas.edit');
+    Route::put
+    ('/{venta}',[App\Http\Controllers\FacturaController::class,'update'])->name('ventas.update');
+    Route::get
+    ('/{venta}',[App\Http\Controllers\FacturaController::class,'show'])->name('ventas.show');
+    Route::delete
+    ('/{venta}',[App\Http\Controllers\FacturaController::class,'destroy'])->name('ventas.delete');
+    Route::get
+    ('/pdf/{venta}',[App\Http\Controllers\FacturaController::class,'pdf'])->name('ventas.pdf');
+
+    Route::group(['prefix'=>'detalles'], function () {
+        //RUTAS DETALLE COMPRA
+        Route::get
+        ('/create/{venta_id}',[App\Http\Controllers\DetalleFacturaController::class,'create'])->name('ventas.detalles.create');
+        Route::post
+        ('/{venta_id}',[App\Http\Controllers\DetalleFacturaController::class,'store'])->name('ventas.detalles.store');
+        Route::get
+        ('/{id}/destroy/{venta_id}',[App\Http\Controllers\DetalleFacturaController::class,'destroy'])->name('ventas.detalles.delete');
+    });
+
+    Route::group(['prefix'=>'clientes'], function () {
+        //RUTAS CLIENTE
+        Route::get
+        ('/create',[App\Http\Controllers\ClienteController::class,'create'])->name('clientes.create');
+        Route::post
+        ('/',[App\Http\Controllers\ClienteController::class,'store'])->name('clientes.store');
+        Route::get
+        ('/index',[App\Http\Controllers\ClienteController::class,'index'])->name('clientes.index');
+        Route::get
+        ('/{cliente}/edit',[App\Http\Controllers\ClienteController::class,'edit'])->name('clientes.edit');
+        Route::put
+        ('/{cliente}',[App\Http\Controllers\ClienteController::class,'update'])->name('clientes.update');
+        Route::get
+        ('/{cliente}',[App\Http\Controllers\ClienteController::class,'show'])->name('clientes.show');
+        Route::delete
+        ('/{cliente}',[App\Http\Controllers\ClienteController::class,'destroy'])->name('clientes.delete');
     });
 });
 

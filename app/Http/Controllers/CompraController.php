@@ -7,6 +7,7 @@ use App\Models\Compra;
 use App\Models\Persona;
 use App\Models\Producto;
 use App\Models\TipoCompra;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -128,5 +129,17 @@ class CompraController extends Controller
         }
 
         return redirect()->route('compras.index');
+    }
+
+    public function pdf($id)
+    {
+        $compra = Compra::findOrFail($id);
+        $compra->load('proveedor');
+        $compra->load('tipo_compra');
+        $compra->load('compra_detalles');
+        $compra->compra_detalles->load('producto');
+
+        $pdf = PDF::loadView('compras.pdf',compact('compra'));
+        return $pdf->download('Reporte_de_compra_'.$compra->id.'.pdf');
     }
 }

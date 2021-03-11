@@ -42,8 +42,12 @@
                                                     <td>{{ $compra->saldo }}</td>
                                                     <td>{{ $compra->estado }}</td>
                                                     <td class="td-actions text-right">
+                                                        {{--Reporte--}}
+                                                        <a href="{{ route('compras.pdf',$compra->id) }}" class="btn btn-social btn-fill btn-facebook">
+                                                            <i class="material-icons">article</i>
+                                                        </a>
                                                         {{--Ver--}}
-                                                        <a href="{{ route('compras.show',$compra->id) }}" class="btn btn-info">
+                                                        <a href="{{ route('compras.show',$compra->id) }}" class="btn btn-success">
                                                             <i class="material-icons">search</i>
                                                         </a>
                                                         {{--Editar

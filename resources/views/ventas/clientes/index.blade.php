@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage'=>'almacen', 'titlePage'=>'Almacén'])
+@extends('layouts.main', ['activePage'=>'clientes', 'titlePage'=>'Clientes'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -11,52 +11,58 @@
                     </button>
                 </div>
             @endif
-            {{--Boton--}}
+            {{--Botón agregar--}}
             <div class="row">
                 <div class="col-12 text-left">
-                    <a href="{{ route('almacenes.create') }}" class="btn btn-rose"> Agregar Almacén </a>
+                    <a href="{{ route('clientes.create')  }}" class="btn btn-rose">Registrar Cliente</a>
                 </div>
             </div>
-            {{--Tabla--}}
+            {{--Empieza la tabla--}}
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="card">
+                        {{--Header--}}
                         <div class="card-header card-header-rose">
-                            <h4 class="card-title"> Almacén </h4>
+                            <h4 class="card-title">Clientes</h4>
                         </div>
                         {{--Body--}}
                         <div class="card-body">
+                            {{--tabla--}}
                             <div class="table-responsive">
                                 <table class="table">
+                                    {{--Cabecera de Tabla--}}
                                     <thead class="text-primary text-rose">
                                     <th>#</th>
+                                    <th>CI</th>
                                     <th>Nombre</th>
-                                    <th>Ubicación</th>
-                                    <th>Fecha de Creación</th>
-                                    <th>Accion</th>
+                                    <th>Apellidos</th>
+                                    <th>Teléfono</th>
+                                    <th>Dirección</th>
+                                    <th>Correo electrónico</th>
+                                    <th class="text-right">Acciones</th>
                                     </thead>
+                                    {{--Llamar a los proveedores--}}
                                     <tbody>
-                                    @foreach($almacenes as $almacen)
+                                    @foreach($personas as $persona)
                                         <tr>
-                                            <td>{{ $almacen->id }}</td>
-                                            <td>{{ $almacen->nombre }}</td>
-                                            <td>{{ $almacen->ubicacion }}</td>
-                                            <td>{{ $almacen->created_at }}</td>
-                                            <td class="td-actions">
+                                            <td>{{ $persona->id }}</td>
+                                            <td>{{ $persona->carnet_identidad }}</td>
+                                            <td>{{ $persona->nombre }}</td>
+                                            <td>{{ $persona->apellidos }}</td>
+                                            <td>{{ $persona->telefono }}</td>
+                                            <td>{{ $persona->direccion }}</td>
+                                            <td>{{ $persona->email }}</td>
+                                            <td class="td-actions text-right">
                                                 {{--Ver--}}
-                                                <a href="{{ route('almacenes.show',$almacen->id) }}" class="btn btn-info">
-                                                    <i class="material-icons">search</i>
+                                                <a href="{{ route('clientes.show', $persona->id) }}" class="btn btn-info">
+                                                    <i class="material-icons">person</i>
                                                 </a>
-                                                {{--Sectores--}}
-                                                <a href="{{ route('sectores.create',$almacen->id) }}" class="btn btn-success">
-                                                    <i class="material-icons">layers</i>
-                                                </a>
-                                                {{--Editar--}}
-                                                <a href="{{ route('almacenes.edit',$almacen->id) }}" class="btn btn-warning">
+                                                {{--Editar Usuario--}}
+                                                <a href="{{ route('clientes.edit', $persona->id) }}" class="btn btn-warning">
                                                     <i class="material-icons">edit</i>
                                                 </a>
-                                                {{--Eliminar--}}
-                                                <form action="{{ route('almacenes.delete',$almacen->id) }}" method="POST"
+                                                {{--Eliminar Usuario--}}
+                                                <form action="{{ route('clientes.delete',$persona->id) }}" method="post"
                                                       style="display: inline-block;"
                                                       onsubmit="return confirm('¿Está seguro?')">
                                                     @csrf
@@ -72,6 +78,10 @@
                                 </table>
                             </div>
                         </div>
+                        {{--Footer
+                        <div class="card-footer mr-auto">
+                            {{ $personas->links() }}
+                        </div>--}}
                     </div>
                 </div>
             </div>

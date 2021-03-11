@@ -8,7 +8,7 @@
         <ul class="nav">
             <li class="nav-item {{ ($activePage == 'productos' || $activePage == 'caracteristicas') ? ' active' : 'show' }}">
                 <a class="nav-link collapsed" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
-                    <i class="material-icons">shopping_basket</i>
+                    <i class="material-icons">inventory</i>
                     <p>{{ __('Gestionar Inventario') }}
                         <b class="caret"></b>
                     </p>
@@ -17,7 +17,7 @@
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'productos' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('productos.index') }}">
-                                <i class="material-icons">inventory</i>
+                                <i class="material-icons">shopping_basket</i>
                                 <span class="sidebar-normal">{{ __('Producto') }} </span>
                             </a>
                         </li>
@@ -68,7 +68,7 @@
                 </div>
             </li>
             {{--Paquete de Gestionar Ventas--}}
-            <li class="nav-item {{ ($activePage == 'venta' || $activePage == 'cliente') ? ' active' : '' }}">
+            <li class="nav-item {{ ($activePage == 'venta' || $activePage == 'clientes') ? ' active' : '' }}">
                 <a class="nav-link collapsed" data-toggle="collapse" href="#ventas" aria-expanded="false">
                     <i class="material-icons">local_grocery_store</i>
                     <p>{{ __('Gestionar Venta') }}
@@ -78,13 +78,13 @@
                 <div class="collapse" id="ventas" style>
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'venta' ? ' active' : '' }}">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('ventas.index') }}">
                                 <i class="material-icons">sell</i>
                                 <span class="sidebar-normal">{{ __('Gestionar Venta') }} </span>
                             </a>
                         </li>
-                        <li class="nav-item{{ $activePage == 'cliente' ? ' active' : '' }}">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item{{ $activePage == 'clientes' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('clientes.index') }}">
                                 <i class="material-icons">perm_identity</i>
                                 <span class="sidebar-normal"> {{ __('Gestionar Cliente') }} </span>
                             </a>

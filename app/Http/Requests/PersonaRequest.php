@@ -23,6 +23,16 @@ class PersonaRequest extends FormRequest
      */
     public function rules()
     {
+        /*$persona = $this->route('persona');
+        return [
+            'carnet_identidad'=>'unique:personas,carnet_identidad,'.$this->persona.'|required',
+            'nombre'=>"required|string|max:60",
+            'apellidos'=>"required|string|max:60",
+            'telefono'=>"nullable",
+            'direccion'=>"nullable|string|max:100",
+            'email'=>'unique:personas,email,'.$this->persona.'|required'
+        ];*/
+
         return [
             'carnet_identidad'=>"required|unique:personas,carnet_identidad,".$this->route('id'),
             'nombre'=>"required|string|max:60",
