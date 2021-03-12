@@ -33,9 +33,9 @@
                                     {{--Cabecera de Tabla--}}
                                     <thead class="text-primary text-rose">
                                     <th>#</th>
-                                    <th>CI</th>
+                                    <th>CI/NIT</th>
                                     <th>Nombre</th>
-                                    <th>Apellidos</th>
+                                    {{--<th>Apellidos</th>--}}
                                     <th>Teléfono</th>
                                     <th>Dirección</th>
                                     <th>Correo electrónico</th>
@@ -48,7 +48,7 @@
                                             <td>{{ $persona->id }}</td>
                                             <td>{{ $persona->carnet_identidad }}</td>
                                             <td>{{ $persona->nombre }}</td>
-                                            <td>{{ $persona->apellidos }}</td>
+                                            {{--<td>{{ $persona->apellidos }}</td>--}}
                                             <td>{{ $persona->telefono }}</td>
                                             <td>{{ $persona->direccion }}</td>
                                             <td>{{ $persona->email }}</td>

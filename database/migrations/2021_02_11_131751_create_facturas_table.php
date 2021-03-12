@@ -16,13 +16,13 @@ class CreateFacturasTable extends Migration
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('nit');
-            $table->unsignedInteger('nro_factura');
+            $table->unsignedInteger('nro_factura')->nullable();
             $table->unsignedBigInteger('nro_autorizacion');
-            $table->date('fecha_emision');
+            $table->date('fecha_emision')->nullable();
             $table->string('descripcion',100);
             $table->float('total')->default(0);
-            $table->string('codigo_control',20);
-            $table->date('fecha_limite');
+            $table->string('codigo_control',20)->nullable();
+            $table->date('fecha_limite')->nullable();
             $table->unsignedBigInteger('cliente_id');
             $table->unsignedBigInteger('vendedor_id');
             $table->timestamps();

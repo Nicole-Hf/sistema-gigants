@@ -6,6 +6,12 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('home') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{ __('Principal') }}</p>
+                </a>
+            </li>
             <li class="nav-item {{ ($activePage == 'productos' || $activePage == 'caracteristicas') ? ' active' : 'show' }}">
                 <a class="nav-link collapsed" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
                     <i class="material-icons">inventory</i>
@@ -97,6 +103,19 @@
                 <a class="nav-link" href="{{ route('users.index') }}">
                     <i class="material-icons">content_paste</i>
                     <p>Administrar Usuarios</p>
+                </a>
+            </li>
+            {{--Cerrar Sesion--}}
+            <li class="nav-item"> {{--{{ $activePage == 'salir' ? ' active' : '' }}--}}
+                {{--<a class="dropdown-item"
+                   href="{{ route('logout') }}"
+                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Cerrar Sesión') }}</a>--}}
+
+                <a class="nav-link"
+                   href="{{ route('logout') }}"
+                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <i class="material-icons">exit_to_app</i>
+                    <p>{{ __('Cerrar Sesión') }}</p>
                 </a>
             </li>
         </ul>

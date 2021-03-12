@@ -100,7 +100,7 @@
         <table id="datos">
             <thead>
             <tr>
-                <th id="">DATOS DEL PROVEEDOR</th>
+                <th id="">PROVEEDOR</th>
             </tr>
             </thead>
             <tbody>
@@ -129,7 +129,7 @@
         <table id="faccomprador">
             <thead>
             <tr id="fv">
-                <th>DATOS DE LA COMPRA</th>
+                <th> </th>
                 {{--<th>COMPRADOR:</th>
                 <th>FECHA DE COMPRA:</th>--}}
             </tr>
@@ -156,9 +156,9 @@
         <table id="facproducto">
             <thead>
             <tr id="fa">
-                <th>PRODUCTO</th>
+                <th>DETALLE</th>
                 <th>CANTIDAD</th>
-                <th>PRECIO COMPRA (Bs)</th>
+                <th>P. COMPRA (Bs)</th>
                 <th>SUBTOTAL (Bs)</th>
             </tr>
             </thead>

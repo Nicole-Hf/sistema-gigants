@@ -14,10 +14,11 @@ class Factura extends Model
         'nit',
         'nro_factura',
         'nro_autorizacion',
-        'fecha',
+        'fecha_emision',
         'descripcion',
         'total',
         'codigo_control',
+        'fecha_limite',
         'cliente_id',
         'vendedor_id'
     ];

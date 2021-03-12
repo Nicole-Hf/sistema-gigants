@@ -47,7 +47,7 @@
                                     {{ $producto->temporada->descripcion }} <br>
                                     <label for="sector_id" class="col-form-label">Sector: </label>
                                     {{ $producto->sector_id != '' ? $producto->sector->nombre : '' }} -
-                                    {{ $producto->sector->almacen->nombre }}<br>
+    {{--{{ $producto->sector->almacen->nombre }}--}}<br>
                                 </p>
                             </div>
                         </div>

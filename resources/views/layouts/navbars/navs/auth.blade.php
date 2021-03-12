@@ -16,7 +16,7 @@
             <span class="navbar-toggler-icon icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end">
-            <form class="navbar-form">
+            {{--<form class="navbar-form">
                 <div class="input-group no-border">
                     <input type="text" value="" class="form-control" placeholder="Search...">
                     <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -33,8 +33,8 @@
                             {{ __('Stats') }}
                         </p>
                     </a>
-                </li>
-                <li class="nav-item dropdown">
+                </li>--}}
+                {{--<li class="nav-item dropdown">
                     <a class="nav-link"
                        href="#pablo"
                        id="navbarDropdownProfile"
@@ -55,7 +55,7 @@
                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Log out') }}</a>
                     </div>
                 </li>
-            </ul>
+            </ul>--}}
         </div>
     </div>
 </nav>

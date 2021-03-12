@@ -48,7 +48,7 @@ class ClienteController extends Controller
         return view('ventas.clientes.edit',['persona'=>$persona]);
     }
 
-    public function update(PersonaRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $persona = Persona::findOrFail($id);
         $datos = $request->all();

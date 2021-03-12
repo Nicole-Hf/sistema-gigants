@@ -50,7 +50,7 @@ class ProveedorController extends Controller
         return view('compras.proveedores.edit',['persona'=>$persona]);
     }
 
-    public function update(PersonaRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $persona = Persona::findOrFail($id);
         $datos = $request->all();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductoCreateRequest;
 use App\Http\Requests\ProductoRequest;
 use App\Models\Almacen;
 use App\Models\Inventario;
@@ -68,7 +69,7 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductoRequest $request)
+    public function store(ProductoCreateRequest $request)
     {
         $producto = new Producto();
         $producto->descripcion = $request->input('descripcion');
@@ -82,7 +83,7 @@ class ProductoController extends Controller
         $producto->modelo_id = $request->input('modelo_id');
         $producto->promocion_id = $request->input('promocion_id');
         $producto->temporada_id = $request->input('temporada_id');
-        $producto->sector_id = $request->input('sector_id');
+        //$producto->sector_id = $request->input('sector_id');
         $producto->save();
 
         return redirect()->route('productos.index');
