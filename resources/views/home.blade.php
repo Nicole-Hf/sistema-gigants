@@ -2,19 +2,6 @@
 
 @section('content')
     <div class="content">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header card-header-icon card-header-rose">
-                        <div class="card-icon">
-                            <i class="material-icons">perm_identity</i>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Here is the Icon</h4>
-                        The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona...
-                    </div>
-                </div>
-            </div>
         @foreach ($totales as $total)
             <div class="row">
                 {{--Total de Compras--}}
@@ -60,6 +47,26 @@
                     </div>
                 </div>
         @endforeach
-    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header card-header-icon card-header-rose">
+                            <div class="card-icon">
+                                <i class="material-icons">perm_identity</i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Perfil de Usuario</h4>
+                            <label for="carnet_identidad" class="col-form-label">Carnet de Identidad: </label>
+                            {{ auth()->user()->persona->carnet_identidad }} <br>
+                            <label for="nombre" class="col-form-label">Nombre Completo: </label>
+                            {{ auth()->user()->persona->nombre .' '. auth()->user()->persona->apellidos }} <br>
+                            <label for="email" class="col-form-label">Correo Electrónico: </label>
+                            {{ auth()->user()->persona->email }} <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
 @endsection
 

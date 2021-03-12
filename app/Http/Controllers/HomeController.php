@@ -34,8 +34,6 @@ class HomeController extends Controller
                                      (select ifnull(sum(v.total),0)
                                       from facturas v where DATE(v.fecha_emision)=curdate()) as totalventa');
 
-        $user = User::only(auth()->user()->id);
-
-        return view('home',compact('comprasmes','totales','user'));
+        return view('home',compact('comprasmes','totales'));
     }
 }
